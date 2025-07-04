@@ -1,10 +1,12 @@
 'use client'
-
+/* eslint-disable react/no-unescaped-entities */
+/* eslint-disable @next/next/no-img-element */
+/* eslint-disable  @typescript-eslint/no-explicit-any */
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Home, Info, Phone, Mail, MapPin, Clock, Facebook, Twitter, Instagram, Linkedin, Wrench, CalendarCheck, Lightbulb, User, MessageSquare, Award, ShieldCheck, HeartHandshake, Headset, FastForward } from 'lucide-react'; // Added Headset and FastForward for new features
 
 // Custom hook for Intersection Observer to detect when an element is in view
-const useInView = (options: any) => {
+export const useIntersectionObserver = (options: any) => {
   const ref = useRef(null);
   const [inView, setInView] = useState(false);
 
@@ -13,19 +15,26 @@ const useInView = (options: any) => {
       setInView(entry.isIntersecting);
     }, options);
 
-    if (ref.current) {
-      observer.observe(ref.current);
+    // Capture the current value of ref.current when the effect runs
+    const currentRef = ref.current;
+
+    if (currentRef) {
+      observer.observe(currentRef);
     }
 
     return () => {
-      if (ref.current) {
-        observer.unobserve(ref.current);
+      // Use the captured value for cleanup
+      if (currentRef) {
+        observer.unobserve(currentRef);
       }
+      // Also, disconnect the observer to release resources
+      observer.disconnect(); 
     };
-  }, [options]);
+  }, [options]); // Depend on options, as it's used in the effect
 
-  return [ref, inView];
+  return [ref, inView] as any;
 };
+
 
 // Main App component
 const HomePage = () => {
@@ -33,14 +42,14 @@ const HomePage = () => {
   const [isHeaderScrolled, setIsHeaderScrolled] = useState(false);
 
   // Use the custom useInView hook for each section
-  const [aboutSectionRef, isAboutInView] = useInView({ threshold: 0.2 });
-  const [servicesSectionRef, isServicesInView] = useInView({ threshold: 0.2 });
-  const [whyChooseUsSectionRef, isWhyChooseUsInView] = useInView({ threshold: 0.2 });
-  const [testimonialsSectionRef, isTestimonialsInView] = useInView({ threshold: 0.2 });
-  const [contactSectionRef, isContactInView] = useInView({ threshold: 0.2 });
+  const [aboutSectionRef, isAboutInView] = useIntersectionObserver({ threshold: 0.2 });
+  const [servicesSectionRef, isServicesInView] = useIntersectionObserver({ threshold: 0.2 });
+  const [whyChooseUsSectionRef, isWhyChooseUsInView] = useIntersectionObserver({ threshold: 0.2 });
+  const [testimonialsSectionRef, isTestimonialsInView] = useIntersectionObserver({ threshold: 0.2 });
+  const [contactSectionRef, isContactInView] = useIntersectionObserver({ threshold: 0.2 });
 
   // Smooth scroll function for navigation
-  const scrollToSection = (id) => {
+  const scrollToSection = (id: any) => {
     const element = document.getElementById(id);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
@@ -628,7 +637,7 @@ const HomePage = () => {
                   <textarea
                     id="message"
                     name="message"
-                    rows="5"
+                    rows={5}
                     className="w-full p-3 pl-10 bg-gray-700 border border-blue-700 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-500 resize-y input-focus-glow"
                     placeholder="Tell us about your plumbing issue..."
                     required

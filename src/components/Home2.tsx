@@ -1,46 +1,54 @@
 'use client'
-
+/* eslint-disable react/no-unescaped-entities */
+/* eslint-disable @next/next/no-img-element */
+/* eslint-disable  @typescript-eslint/no-explicit-any */
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Home, Info, Phone, Mail, MapPin, Clock, Facebook, Twitter, Instagram, Linkedin, Wrench, CalendarCheck, Lightbulb, User, MessageSquare, Award, ShieldCheck, HeartHandshake, Headset, FastForward, CheckCircle, Star } from 'lucide-react';
 
 // Custom hook for Intersection Observer to detect when an element is in view
-const useInView = (options) => {
-  const ref = useRef(null);
-  const [inView, setInView] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(([entry]) => {
-      setInView(entry.isIntersecting);
-    }, options);
-
-    if (ref.current) {
-      observer.observe(ref.current);
-    }
-
-    return () => {
-      if (ref.current) {
-        observer.unobserve(ref.current);
+export const useIntersectionObserver = (options: any) => {
+    const ref = useRef(null);
+    const [inView, setInView] = useState(false);
+  
+    useEffect(() => {
+      const observer = new IntersectionObserver(([entry]) => {
+        setInView(entry.isIntersecting);
+      }, options);
+  
+      // Capture the current value of ref.current when the effect runs
+      const currentRef = ref.current;
+  
+      if (currentRef) {
+        observer.observe(currentRef);
       }
-    };
-  }, [options]);
-
-  return [ref, inView];
-};
-
+  
+      return () => {
+        // Use the captured value for cleanup
+        if (currentRef) {
+          observer.unobserve(currentRef);
+        }
+        // Also, disconnect the observer to release resources
+        observer.disconnect(); 
+      };
+    }, [options]); // Depend on options, as it's used in the effect
+  
+    return [ref, inView] as any;
+  };
+  
 // Main App component
 const Home2 = () => {
   const [activeSection, setActiveSection] = useState('home');
   const [isHeaderScrolled, setIsHeaderScrolled] = useState(false);
 
   // Use the custom useInView hook for each section
-  const [aboutSectionRef, isAboutInView] = useInView({ threshold: 0.2 });
-  const [servicesSectionRef, isServicesInView] = useInView({ threshold: 0.2 });
-  const [whyChooseUsSectionRef, isWhyChooseUsInView] = useInView({ threshold: 0.2 });
-  const [testimonialsSectionRef, isTestimonialsInView] = useInView({ threshold: 0.2 });
-  const [contactSectionRef, isContactInView] = useInView({ threshold: 0.2 });
+  const [aboutSectionRef, isAboutInView] = useIntersectionObserver({ threshold: 0.2 });
+  const [servicesSectionRef, isServicesInView] = useIntersectionObserver({ threshold: 0.2 });
+  const [whyChooseUsSectionRef, isWhyChooseUsInView] = useIntersectionObserver({ threshold: 0.2 });
+  const [testimonialsSectionRef, isTestimonialsInView] = useIntersectionObserver({ threshold: 0.2 });
+  const [contactSectionRef, isContactInView] = useIntersectionObserver({ threshold: 0.2 });
 
   // Smooth scroll function for navigation
-  const scrollToSection = (id) => {
+  const scrollToSection = (id: any) => {
     const element = document.getElementById(id);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
@@ -599,7 +607,7 @@ const Home2 = () => {
                   <textarea
                     id="message"
                     name="message"
-                    rows="5"
+                    rows={5}
                     className="w-full p-3 pl-10 bg-gray-50 border border-blue-300 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 resize-y input-focus-glow"
                     placeholder="Describe your plumbing issue or query..."
                     required
