@@ -65,6 +65,9 @@
 .input-focus-glow:focus {
   box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.5); /* green-500 with opacity */
 }
+.items {
+    width: 22%
+}
 /* styles/HeroSection.module.css */
 
 /* Base styles for smaller screens (stacked) */

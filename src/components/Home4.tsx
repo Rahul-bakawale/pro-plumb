@@ -3,7 +3,7 @@
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable  @typescript-eslint/no-explicit-any */
 import React, { useState, useEffect, useRef, useCallback } from 'react';
-import { Phone, Mail, MapPin, Clock, Facebook, Twitter, Instagram, Linkedin, Wrench,Fan, Lightbulb, User, MessageSquare, CheckCircle, Star, ToolCase, Rocket, DollarSign, Hammer, FileText } from 'lucide-react';
+import { Phone, Mail, MapPin, Clock, Facebook, Twitter, Instagram, Linkedin, Wrench, Fan, Lightbulb, User, MessageSquare, CheckCircle, Star, ToolCase, Rocket, DollarSign, Hammer, FileText } from 'lucide-react';
 
 // Custom hook for Intersection Observer to detect when an element is in view
 export const useIntersectionObserver = (options: any) => {
@@ -195,57 +195,129 @@ const HomePage4 = () => {
           style={{
             backgroundImage: "url('./cover2.png')",
             backgroundSize: 'cover',
-            backgroundPosition: 'center', // Center the image
-            filter: 'grayscale(50%)', // Optional: Desaturate slightly to blend better
+            backgroundPosition: 'center',
+            filter: 'grayscale(50%)',
           }}
         ></div>
-        <div className="relative z-10 p-6 md:p-12 max-w-5xl mx-auto rounded-xl shadow-2xl bg-white bg-opacity-90 border border-green-300
-              flex flex-col md:flex-row md:items-stretch md:text-left text-center
-              flex-grow-0 md:flex-grow w-11/12 md:w-auto overflow-hidden">
-          {/* Left Half: Text Content */}
-          <div className="md:w-1/2 p-4 md:pr-8">
-            <h2 className="text-4xl md:text-6xl font-extrabold text-gray-900 leading-tight mb-4 opacity-0 animate-fade-in-up">
-              We Solve Your
-              <span className="text-green-600"> Plumbing Problems With Ease</span>
-            </h2>
-            <p className="text-lg md:text-xl text-gray-700 mb-8 opacity-0 animate-fade-in-up" style={{ animationDelay: '0.2s', animationFillMode: 'forwards' }}>
-              So that you can focus on your most valuable tasks desperately.
-            </p>
-            {/* "Get a Free Estimate" button remains on the left with text */}
-            <button
-              onClick={() => scrollToSection('contact')}
-              className="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-8 rounded-full text-lg md:text-xl transition duration-300 ease-in-out transform hover:scale-105 shadow-lg opacity-0 animate-fade-in-up animate-pulse-effect"
-              style={{ animationDelay: '0.4s', animationFillMode: 'forwards' }}
-            >
-              Get a Free Estimate
-            </button>
+        <div className="relative z-10 p-6 md:p-12 max-w-7xl mx-auto rounded-xl shadow-2xl bg-white bg-opacity-90 border border-green-300
+          flex flex-col md:flex-row md:items-stretch md:text-left text-center
+          flex-grow-0 md:flex-grow w-11/12 md:w-auto overflow-hidden">
+          {/* Left Half: Text Content and GREEN "Get a Free Estimate" Button */}
+          <div className="md:w-1/2 md:pr-8 flex flex-col justify-between">
+            <div>
+              <h2 className="text-6xl md:text-6xl font-extrabold text-gray-900 leading-tight mb-3 opacity-0 animate-fade-in-up">
+                We Solve Your
+                <span className="text-green-600"> Plumbing Problems With Ease</span>
+              </h2>
+              <p className="text-lg md:text-xl text-gray-700 mb-0 opacity-0 animate-fade-in-up" style={{ animationDelay: '0.2s', animationFillMode: 'forwards' }}>
+              So you can focus on your most valuable tasks, we ensure 100% customer satisfaction.
+              </p>
+              <div className="bg-white p-6 rounded-lg shadow-lg flex flex-col items-center text-center max-w mx-auto">
+                {/* Customer Review Section */}
+                <div className="mb-2">
+                  <p className="tex t-gray-800 text-lg italic">
+                    "Excellent service! The plumbers were professional, efficient, and solved our issue quickly. Highly recommend!"
+                  </p>
+                  <p className="text-green-600 font-semibold mt-2">- Happy Customer</p>
+                </div>
+
+                {/* Google Rating Section */}
+                <div className="flex items-center justify-center border-t border-gray-200 pt-4 w-full">
+                  {/* Google Icon */}
+                  {/* You'll need to replace this SVG with an actual Google icon or an image.
+        For a real app, you'd typically use an SVG from an icon library or a Font Awesome icon.
+        This is a generic placeholder. */}
+                  <svg
+                    className="w-6 h-6 mr-2 text-green-600"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h6.15c-.29 1.59-1.14 2.76-2.39 3.58v2.92h3.75c2.2-2.02 3.47-5 3.47-8.25z" fill="#4285F4"></path>
+                    <path d="M12 23c3.25 0 5.97-1.07 7.96-2.92l-3.75-2.92c-1.05.71-2.42 1.17-4.21 1.17-3.57 0-6.58-2.42-7.67-5.68H.36v2.92C2.45 20.89 7.02 23 12 23z" fill="#34A853"></path>
+                    <path d="M4.33 14.18c-.1-.71-.16-1.46-.16-2.18s.06-1.47.16-2.18V6.82H.36c-.66 1.39-.99 2.94-.99 4.55s.33 3.16.99 4.55L4.33 14.18z" fill="#FBBC05"></path>
+                    <path d="M12 4.18c1.85 0 3.45.63 4.73 1.83l3.37-3.37C17.97 1.14 15.25 0 12 0 7.02 0 2.45 2.11.36 6.08l3.97 3.08C5.42 6.6 8.43 4.18 12 4.18z" fill="#EA4335"></path>
+                  </svg>
+                  <svg className="w-5 h-5 text-yellow-400 fill-current" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
+                  </svg>
+                  <svg className="w-5 h-5 text-yellow-400 fill-current" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
+                  </svg>
+                  <svg className="w-5 h-5 text-yellow-400 fill-current" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
+                  </svg>
+                  <svg className="w-5 h-5 text-yellow-400 fill-current" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
+                  </svg>
+                  <svg className="w-5 h-5 text-gray-400 fill-current" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
+                  </svg>
+
+
+                  <span className="text-gray-600 text-sm"> (500+ Reviews on Google)</span>
+                </div>
+              </div>
+            </div>
+
           </div>
 
-          {/* Right Half: Image and Call Now Button */}
+          {/* Right Half: Image Background and BOTTOM Buttons */}
           <div
-            className="md:w-1/2 p-4 mt-8 md:mt-0 flex flex-col items-center justify-center h-full w-full .rightContainer"
+            className="md:w-1/2 p-4 mt-8 md:mt-0 flex flex-col justify-end items-center h-full w-full .rightContainer"
             style={{
-              backgroundImage: "url('/cover.png')", /* Assuming cover.png is in your public folder */
+              backgroundImage: "url('/cover.png')",
               backgroundSize: 'cover',
-              backgroundPosition: 'center', // Center the image
-              filter: 'grayscale(50%)', // Optional: Desaturate slightly to blend better
-              height: 450
+              backgroundPosition: 'center',
+              filter: 'grayscale(50%)',
+              height: 556
             }}
           >
-            {/* The image (if applicable) would go inside here if you want it on top of the background image */}
-            {/* And the button */}
-            <button
-              onClick={() => window.location.href = 'tel:+1234567890'}
-              className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-10 rounded-full text-xl md:text-2xl transition duration-300 ease-in-out transform hover:scale-105 shadow-lg opacity-0 animate-fade-in-up"
-              style={{ animationDelay: '0.8s', animationFillMode: 'forwards' }}
-            >
-              <span className="flex items-center">
-                <svg className="w-6 h-6 mr-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+            <div className="flex-grow"></div>
+
+            <div className="flex flex-row justify-around w-full px-4 pb-4">
+              <button
+                onClick={() => window.location.href = 'tel:+61423555555'}
+                className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-full text-base transition duration-300 ease-in-out transform hover:scale-105 shadow-lg opacity-0 animate-fade-in-up flex items-center justify-center min-w-[150px]"
+                style={{ animationDelay: '0.8s', animationFillMode: 'forwards' }}
+              >
+                <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                   <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.774a11.037 11.037 0 006.103 6.103l.774-1.548a1 1 0 011.06-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"></path>
                 </svg>
-                Call Our Experts Now
-              </span>
-            </button>
+                Call Now (+61423555555)
+              </button>
+
+              <button
+                onClick={() => scrollToSection('contact')}
+                className="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-3 px-6 rounded-full text-base transition duration-300 ease-in-out transform hover:scale-105 shadow-lg opacity-0 animate-fade-in-up flex items-center justify-center min-w-[150px]"
+                style={{ animationDelay: '1s', animationFillMode: 'forwards' }}
+              >
+                Quick Quote
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* THIS IS THE MODIFIED DIV FOR THE 4 ITEMS */}
+        <div className='absolute bottom-0 left-0 right-0 w-full flex flex-wrap justify-center items-center p-4 z-20'> {/* Added p-4 for padding from bottom */}
+          {/* Item 1 */}
+          <div className="bg-white leading-loose text-green-600 items font-bold py-3 flex px-6 rounded-lg shadow-md border border-gray-200 cursor-pointer hover:bg-gray-50 transition duration-200 m-2">
+            <FileText className="text-green-600" size={30} />&nbsp; Lincenced Plumber
+          </div>
+
+          {/* Item 2 */}
+          <div className="bg-white leading-loose text-green-600 items font-bold flex py-3 px-6 rounded-lg shadow-md border border-gray-200 cursor-pointer hover:bg-gray-50 transition duration-200 m-2">
+            <Rocket className="text-green-600" size={30} />&nbsp; Same Day Response
+          </div>
+
+          {/* Item 3 */}
+          <div className="bg-white leading-loose text-green-600 items font-bold flex py-3 px-6 rounded-lg shadow-md border border-gray-200 cursor-pointer hover:bg-gray-50 transition duration-200 m-2">
+            <DollarSign className="text-green-600" size={30} />&nbsp; Price That Fits
+          </div>
+
+          {/* Item 4 */}
+          <div className="bg-white leading-loose text-green-600 items font-bold flex py-3 px-6 rounded-lg shadow-md border border-gray-200 cursor-pointer hover:bg-gray-50 transition duration-200 m-2">
+            <Hammer className="text-green-600" size={30} />&nbsp; Happy Customer
           </div>
         </div>
       </section>
@@ -344,73 +416,73 @@ const HomePage4 = () => {
 
       {/* Why Choose Us Section */}
       <section id="why-choose-us" ref={whyChooseUsSectionRef} className={`py-20 px-6 md:px-12 bg-white opacity-0 ${isWhyChooseUsInView ? 'animate-fade-in-up' : ''}`}>
-  <div className="max-w-6xl mx-auto text-center">
-    <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-12">
-      Why Choose <span className="text-green-600">Us?</span>
-    </h2>
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      {/* Feature Card 1: 24/7 Plumbing */}
-      <div className={`bg-green-50 p-8 rounded-xl shadow-lg border border-green-200 transform hover:scale-105 transition duration-300 ease-in-out ${isWhyChooseUsInView ? 'animate-fade-in-scale' : ''}`} style={{ animationDelay: '0s', animationFillMode: 'forwards' }}>
-        {/* Changed icon to represent 24/7 or emergency */}
-        <Clock className="text-green-600 mx-auto mb-6" size={48} /> {/* Using Clock, or Phone, or Emergency */}
-        <h3 className="text-2xl font-semibold text-gray-900 mb-4">24/7 Emergency Plumbing</h3>
-        <p className="text-gray-700 leading-relaxed">
-          Ready to assist you any time, day or night, for all urgent plumbing needs.
-        </p>
-      </div>
+        <div className="max-w-6xl mx-auto text-center">
+          <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-12">
+            Why Choose <span className="text-green-600">Us?</span>
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {/* Feature Card 1: 24/7 Plumbing */}
+            <div className={`bg-green-50 p-8 rounded-xl shadow-lg border border-green-200 transform hover:scale-105 transition duration-300 ease-in-out ${isWhyChooseUsInView ? 'animate-fade-in-scale' : ''}`} style={{ animationDelay: '0s', animationFillMode: 'forwards' }}>
+              {/* Changed icon to represent 24/7 or emergency */}
+              <Clock className="text-green-600 mx-auto mb-6" size={48} /> {/* Using Clock, or Phone, or Emergency */}
+              <h3 className="text-2xl font-semibold text-gray-900 mb-4">24/7 Emergency Plumbing</h3>
+              <p className="text-gray-700 leading-relaxed">
+                Ready to assist you any time, day or night, for all urgent plumbing needs.
+              </p>
+            </div>
 
-      {/* Feature Card 2: Same Day Response */}
-      <div className={`bg-green-50 p-8 rounded-xl shadow-lg border border-green-200 transform hover:scale-105 transition duration-300 ease-in-out ${isWhyChooseUsInView ? 'animate-fade-in-scale' : ''}`} style={{ animationDelay: '0.15s', animationFillMode: 'forwards' }}>
-        {/* Changed icon for speed/response */}
-        <Rocket className="text-green-600 mx-auto mb-6" size={48} /> {/* Using Rocket, or FastForward */}
-        <h3 className="text-2xl font-semibold text-gray-900 mb-4">Same Day Response</h3>
-        <p className="text-gray-700 leading-relaxed">
-          We prioritize your urgent requests with prompt service and quick turnarounds.
-        </p>
-      </div>
+            {/* Feature Card 2: Same Day Response */}
+            <div className={`bg-green-50 p-8 rounded-xl shadow-lg border border-green-200 transform hover:scale-105 transition duration-300 ease-in-out ${isWhyChooseUsInView ? 'animate-fade-in-scale' : ''}`} style={{ animationDelay: '0.15s', animationFillMode: 'forwards' }}>
+              {/* Changed icon for speed/response */}
+              <Rocket className="text-green-600 mx-auto mb-6" size={48} /> {/* Using Rocket, or FastForward */}
+              <h3 className="text-2xl font-semibold text-gray-900 mb-4">Same Day Response</h3>
+              <p className="text-gray-700 leading-relaxed">
+                We prioritize your urgent requests with prompt service and quick turnarounds.
+              </p>
+            </div>
 
-      {/* Feature Card 3: Price that fits */}
-      <div className={`bg-green-50 p-8 rounded-xl shadow-lg border border-green-200 transform hover:scale-105 transition duration-300 ease-in-out ${isWhyChooseUsInView ? 'animate-fade-in-scale' : ''}`} style={{ animationDelay: '0.3s', animationFillMode: 'forwards' }}>
-        {/* Changed icon for pricing */}
-        <DollarSign className="text-green-600 mx-auto mb-6" size={48} /> {/* Using DollarSign, or Tag */}
-        <h3 className="text-2xl font-semibold text-gray-900 mb-4">Price That Fits</h3>
-        <p className="text-gray-700 leading-relaxed">
-          Transparent and competitive pricing tailored to your budget, no hidden fees.
-        </p>
-      </div>
+            {/* Feature Card 3: Price that fits */}
+            <div className={`bg-green-50 p-8 rounded-xl shadow-lg border border-green-200 transform hover:scale-105 transition duration-300 ease-in-out ${isWhyChooseUsInView ? 'animate-fade-in-scale' : ''}`} style={{ animationDelay: '0.3s', animationFillMode: 'forwards' }}>
+              {/* Changed icon for pricing */}
+              <DollarSign className="text-green-600 mx-auto mb-6" size={48} /> {/* Using DollarSign, or Tag */}
+              <h3 className="text-2xl font-semibold text-gray-900 mb-4">Price That Fits</h3>
+              <p className="text-gray-700 leading-relaxed">
+                Transparent and competitive pricing tailored to your budget, no hidden fees.
+              </p>
+            </div>
 
-      {/* Feature Card 4: Quality Workmanship */}
-      <div className={`bg-green-50 p-8 rounded-xl shadow-lg border border-green-200 transform hover:scale-105 transition duration-300 ease-in-out ${isWhyChooseUsInView ? 'animate-fade-in-scale' : ''}`} style={{ animationDelay: '0.45s', animationFillMode: 'forwards' }}>
-        {/* Changed icon for quality */}
-        <Hammer className="text-green-600 mx-auto mb-6" size={48} /> {/* Using Hammer, or Award, or ShieldCheck */}
-        <h3 className="text-2xl font-semibold text-gray-900 mb-4">Quality Workmanship</h3>
-        <p className="text-gray-700 leading-relaxed">
-          Dedicated to providing durable, reliable solutions with exceptional skill.
-        </p>
-      </div>
+            {/* Feature Card 4: Quality Workmanship */}
+            <div className={`bg-green-50 p-8 rounded-xl shadow-lg border border-green-200 transform hover:scale-105 transition duration-300 ease-in-out ${isWhyChooseUsInView ? 'animate-fade-in-scale' : ''}`} style={{ animationDelay: '0.45s', animationFillMode: 'forwards' }}>
+              {/* Changed icon for quality */}
+              <Hammer className="text-green-600 mx-auto mb-6" size={48} /> {/* Using Hammer, or Award, or ShieldCheck */}
+              <h3 className="text-2xl font-semibold text-gray-900 mb-4">Quality Workmanship</h3>
+              <p className="text-gray-700 leading-relaxed">
+                Dedicated to providing durable, reliable solutions with exceptional skill.
+              </p>
+            </div>
 
-      {/* Feature Card 5: Licensed Plumbers */}
-      <div className={`bg-green-50 p-8 rounded-xl shadow-lg border border-green-200 transform hover:scale-105 transition duration-300 ease-in-out ${isWhyChooseUsInView ? 'animate-fade-in-scale' : ''}`} style={{ animationDelay: '0.6s', animationFillMode: 'forwards' }}>
-        {/* Changed icon for licensed/certified */}
-        <FileText className="text-green-600 mx-auto mb-6" size={48} /> {/* Using FileText, or IdCard, or Certificate */}
-        <h3 className="text-2xl font-semibold text-gray-900 mb-4">Licensed Plumbers</h3>
-        <p className="text-gray-700 leading-relaxed">
-          Our team comprises fully licensed and highly skilled plumbing professionals.
-        </p>
-      </div>
+            {/* Feature Card 5: Licensed Plumbers */}
+            <div className={`bg-green-50 p-8 rounded-xl shadow-lg border border-green-200 transform hover:scale-105 transition duration-300 ease-in-out ${isWhyChooseUsInView ? 'animate-fade-in-scale' : ''}`} style={{ animationDelay: '0.6s', animationFillMode: 'forwards' }}>
+              {/* Changed icon for licensed/certified */}
+              <FileText className="text-green-600 mx-auto mb-6" size={48} /> {/* Using FileText, or IdCard, or Certificate */}
+              <h3 className="text-2xl font-semibold text-gray-900 mb-4">Licensed Plumbers</h3>
+              <p className="text-gray-700 leading-relaxed">
+                Our team comprises fully licensed and highly skilled plumbing professionals.
+              </p>
+            </div>
 
-      {/* Feature Card 6: Google Review 4.7 */}
-      <div className={`bg-green-50 p-8 rounded-xl shadow-lg border border-green-200 transform hover:scale-105 transition duration-300 ease-in-out ${isWhyChooseUsInView ? 'animate-fade-in-scale' : ''}`} style={{ animationDelay: '0.75s', animationFillMode: 'forwards' }}>
-        {/* Changed icon for reviews/rating */}
-        <Star className="text-green-600 mx-auto mb-6" size={48} /> {/* Using Star, or Google, or ThumbsUp */}
-        <h3 className="text-2xl font-semibold text-gray-900 mb-4">Google Review 4.7+</h3>
-        <p className="text-gray-700 leading-relaxed">
-          Proudly maintaining a high customer satisfaction rating based on your feedback.
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
+            {/* Feature Card 6: Google Review 4.7 */}
+            <div className={`bg-green-50 p-8 rounded-xl shadow-lg border border-green-200 transform hover:scale-105 transition duration-300 ease-in-out ${isWhyChooseUsInView ? 'animate-fade-in-scale' : ''}`} style={{ animationDelay: '0.75s', animationFillMode: 'forwards' }}>
+              {/* Changed icon for reviews/rating */}
+              <Star className="text-green-600 mx-auto mb-6" size={48} /> {/* Using Star, or Google, or ThumbsUp */}
+              <h3 className="text-2xl font-semibold text-gray-900 mb-4">Google Review 4.7+</h3>
+              <p className="text-gray-700 leading-relaxed">
+                Proudly maintaining a high customer satisfaction rating based on your feedback.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Testimonials Section */}
       <section id="testimonials" ref={testimonialsSectionRef} className={`py-20 px-6 md:px-12 bg-gray-100 opacity-0 ${isTestimonialsInView ? 'animate-fade-in-up' : ''}`}>
