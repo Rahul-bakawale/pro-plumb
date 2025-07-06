@@ -3,38 +3,38 @@
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable  @typescript-eslint/no-explicit-any */
 import React, { useState, useEffect, useRef, useCallback } from 'react';
-import { Home, Info, Phone, Mail, MapPin, Clock, Facebook, Twitter, Instagram, Linkedin, Wrench, CalendarCheck, Lightbulb, User, MessageSquare, Award, ShieldCheck, HeartHandshake, Headset, FastForward, CheckCircle, Star } from 'lucide-react';
+import { Phone, Mail, MapPin, Clock, Facebook, Twitter, Instagram, Linkedin, Wrench,Fan, Lightbulb, User, MessageSquare, CheckCircle, Star, ToolCase, Rocket, DollarSign, Hammer, FileText } from 'lucide-react';
 
 // Custom hook for Intersection Observer to detect when an element is in view
 export const useIntersectionObserver = (options: any) => {
-    const ref = useRef(null);
-    const [inView, setInView] = useState(false);
-  
-    useEffect(() => {
-      const observer = new IntersectionObserver(([entry]) => {
-        setInView(entry.isIntersecting);
-      }, options);
-  
-      // Capture the current value of ref.current when the effect runs
-      const currentRef = ref.current;
-  
+  const ref = useRef(null);
+  const [inView, setInView] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(([entry]) => {
+      setInView(entry.isIntersecting);
+    }, options);
+
+    // Capture the current value of ref.current when the effect runs
+    const currentRef = ref.current;
+
+    if (currentRef) {
+      observer.observe(currentRef);
+    }
+
+    return () => {
+      // Use the captured value for cleanup
       if (currentRef) {
-        observer.observe(currentRef);
+        observer.unobserve(currentRef);
       }
-  
-      return () => {
-        // Use the captured value for cleanup
-        if (currentRef) {
-          observer.unobserve(currentRef);
-        }
-        // Also, disconnect the observer to release resources
-        observer.disconnect(); 
-      };
-    }, [options]); // Depend on options, as it's used in the effect
-  
-    return [ref, inView] as any;
-  };
-  
+      // Also, disconnect the observer to release resources
+      observer.disconnect();
+    };
+  }, [options]); // Depend on options, as it's used in the effect
+
+  return [ref, inView] as any;
+};
+
 
 // Main App component
 const HomePage4 = () => {
@@ -80,83 +80,9 @@ const HomePage4 = () => {
   useEffect(() => {
     document.body.style.fontFamily = 'Inter, sans-serif';
     document.body.style.backgroundColor = '#F8F8F8'; // Light background for the entire page
-
-    const styleSheet = document.createElement("style");
-    styleSheet.type = "text/css";
-    styleSheet.innerText = `
-      @keyframes fadeInUp {
-        from {
-          opacity: 0;
-          transform: translateY(40px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-      @keyframes fadeInScale {
-        from {
-          opacity: 0;
-          transform: scale(0.9);
-        }
-        to {
-          opacity: 1;
-          transform: scale(1);
-        }
-      }
-      @keyframes pulseEffect {
-        0%, 100% {
-          transform: scale(1);
-        }
-        50% {
-          transform: scale(1.03);
-        }
-      }
-      @keyframes slideInLeft {
-        from {
-          opacity: 0;
-          transform: translateX(-50px);
-        }
-        to {
-          opacity: 1;
-          transform: translateX(0);
-        }
-      }
-      @keyframes slideInRight {
-        from {
-          opacity: 0;
-          transform: translateX(50px);
-        }
-        to {
-          opacity: 1;
-          transform: translateX(0);
-        }
-      }
-      .animate-fade-in-up {
-        animation: fadeInUp 0.8s ease-out forwards;
-      }
-      .animate-fade-in-scale {
-        animation: fadeInScale 0.8s ease-out forwards;
-      }
-      .animate-pulse-effect {
-        animation: pulseEffect 2s infinite ease-in-out;
-      }
-      .animate-slide-in-left {
-        animation: slideInLeft 0.7s ease-out forwards;
-      }
-      .animate-slide-in-right {
-        animation: slideInRight 0.7s ease-out forwards;
-      }
-      .input-focus-glow:focus {
-        box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.5); /* green-500 with opacity */
-      }
-    `;
-    document.head.appendChild(styleSheet);
-
     window.addEventListener('scroll', handleScroll);
     return () => {
       window.removeEventListener('scroll', handleScroll);
-      document.head.removeChild(styleSheet);
     };
   }, [handleScroll]);
 
@@ -167,64 +93,86 @@ const HomePage4 = () => {
         ${isHeaderScrolled ? 'bg-white bg-opacity-95 shadow-md backdrop-blur-sm' : 'bg-transparent'}`}>
         <div className="flex items-center">
           <Wrench className="text-green-600 mr-3 h-8 w-8" />
-          <h1 className="text-3xl font-bold text-gray-900">
-            <span className="text-green-600">Eco</span>Plumb
+          <h1 className={`text-3xl font-bold ${isHeaderScrolled ? 'text-gray-900' : 'text-white'}`}>
+            <span className={`${isHeaderScrolled ? 'text-green-600' : 'text-green-950'}`}>Beconsfield&nbsp;</span>Plumbing
           </h1>
         </div>
         <nav className="hidden md:flex space-x-8">
           <button
             onClick={() => scrollToSection('home')}
-            className={`text-lg font-medium transition duration-300 ease-in-out ${
-              activeSection === 'home' ? 'text-green-600 border-b-2 border-green-600' : 'text-gray-700 hover:text-green-600'
-            }`}
+            className={`text-lg font-medium transition duration-300 ease-in-out ${activeSection === 'home'
+              ? 'text-green-950 border-b-2 border-green-950' // Active section styles
+              : isHeaderScrolled // If header is scrolled AND not active section
+                ? 'text-gray-700 hover:text-green-600' // Scrolled, not active, with hover
+                : 'text-white hover:text-green-950' // Not scrolled, not active, with hover
+              }`}
           >
             Home
           </button>
           <button
             onClick={() => scrollToSection('about')}
-            className={`text-lg font-medium transition duration-300 ease-in-out ${
-              activeSection === 'about' ? 'text-green-600 border-b-2 border-green-600' : 'text-gray-700 hover:text-green-600'
-            }`}
+            className={`text-lg font-medium transition duration-300 ease-in-out ${activeSection === 'about'
+              ? 'text-green-600 border-b-2 border-green-600' // Active section styles
+              : isHeaderScrolled // If header is scrolled AND not active section
+                ? 'text-gray-700 hover:text-green-600' // Scrolled, not active, with hover
+                : 'text-white hover:text-green-950' // Not scrolled, not active, with hover
+              }`}
           >
             About Us
           </button>
           <button
             onClick={() => scrollToSection('services')}
-            className={`text-lg font-medium transition duration-300 ease-in-out ${
-              activeSection === 'services' ? 'text-green-600 border-b-2 border-green-600' : 'text-gray-700 hover:text-green-600'
-            }`}
+            className={`text-lg font-medium transition duration-300 ease-in-out ${activeSection === 'services'
+              ? 'text-green-600 border-b-2 border-green-600' // Active section styles
+              : isHeaderScrolled // If header is scrolled AND not active section
+                ? 'text-gray-700 hover:text-green-600' // Scrolled, not active, with hover
+                : 'text-white hover:text-green-950' // Not scrolled, not active, with hover
+              }`}
           >
             Services
           </button>
           <button
             onClick={() => scrollToSection('why-choose-us')}
-            className={`text-lg font-medium transition duration-300 ease-in-out ${
-              activeSection === 'why-choose-us' ? 'text-green-600 border-b-2 border-green-600' : 'text-gray-700 hover:text-green-600'
-            }`}
+            className={`text-lg font-medium transition duration-300 ease-in-out ${activeSection === 'why-choose-us'
+              ? 'text-green-600 border-b-2 border-green-600' // Active section styles
+              : isHeaderScrolled // If header is scrolled AND not active section
+                ? 'text-gray-700 hover:text-green-600' // Scrolled, not active, with hover
+                : 'text-white hover:text-green-950' // Not scrolled, not active, with hover
+              }`}
           >
             Why Us
           </button>
           <button
             onClick={() => scrollToSection('testimonials')}
-            className={`text-lg font-medium transition duration-300 ease-in-out ${
-              activeSection === 'testimonials' ? 'text-green-600 border-b-2 border-green-600' : 'text-gray-700 hover:text-green-600'
-            }`}
+
+            className={`text-lg font-medium transition duration-300 ease-in-out ${activeSection === 'testimonials'
+              ? 'text-green-600 border-b-2 border-green-600' // Active section styles
+              : isHeaderScrolled // If header is scrolled AND not active section
+                ? 'text-gray-700 hover:text-green-600' // Scrolled, not active, with hover
+                : 'text-white hover:text-green-950' // Not scrolled, not active, with hover
+              }`}
           >
             Reviews
           </button>
           <button
             onClick={() => scrollToSection('faq')}
-            className={`text-lg font-medium transition duration-300 ease-in-out ${
-              activeSection === 'faq' ? 'text-green-600 border-b-2 border-green-600' : 'text-gray-700 hover:text-green-600'
-            }`}
+            className={`text-lg font-medium transition duration-300 ease-in-out ${activeSection === 'faq'
+              ? 'text-green-600 border-b-2 border-green-600' // Active section styles
+              : isHeaderScrolled // If header is scrolled AND not active section
+                ? 'text-gray-700 hover:text-green-600' // Scrolled, not active, with hover
+                : 'text-white hover:text-green-950' // Not scrolled, not active, with hover
+              }`}
           >
             FAQ
           </button>
           <button
             onClick={() => scrollToSection('contact')}
-            className={`text-lg font-medium transition duration-300 ease-in-out ${
-              activeSection === 'contact' ? 'text-green-600 border-b-2 border-green-600' : 'text-gray-700 hover:text-green-600'
-            }`}
+            className={`text-lg font-medium transition duration-300 ease-in-out ${activeSection === 'contact'
+              ? 'text-green-600 border-b-2 border-green-600' // Active section styles
+              : isHeaderScrolled // If header is scrolled AND not active section
+                ? 'text-gray-700 hover:text-green-600' // Scrolled, not active, with hover
+                : 'text-white hover:text-green-950' // Not scrolled, not active, with hover
+              }`}
           >
             Contact Us
           </button>
@@ -241,33 +189,66 @@ const HomePage4 = () => {
 
       {/* Hero Section */}
       <section id="home" className="relative h-screen flex items-center justify-center text-center bg-gradient-to-br from-green-500 to-teal-600">
-        <div className="absolute inset-0 opacity-20" style={{ backgroundImage: "url('https://placehold.co/1920x1080/FFFFFF/22C55E?text=Abstract+Leaf+Pattern')", backgroundSize: 'cover' }}></div>
-        <div className="relative z-10 p-6 md:p-12 max-w-4xl mx-auto rounded-xl shadow-2xl bg-white bg-opacity-90 border border-green-300">
-          <h2 className="text-5xl md:text-7xl font-extrabold text-gray-900 leading-tight mb-6 opacity-0 animate-fade-in-up">
-            Sustainable <span className="text-green-600">Plumbing Solutions</span>
-          </h2>
-          <p className="text-xl md:text-2xl text-gray-700 mb-10 opacity-0 animate-fade-in-up" style={{ animationDelay: '0.2s', animationFillMode: 'forwards' }}>
-            Eco-friendly, efficient, and reliable services for your home and business.
-          </p>
-          <div className="flex flex-col sm:flex-row justify-center gap-4">
+        {/* Updated Background Image */}
+        <div
+          className="absolute inset-0 opacity-20"
+          style={{
+            backgroundImage: "url('./cover2.png')",
+            backgroundSize: 'cover',
+            backgroundPosition: 'center', // Center the image
+            filter: 'grayscale(50%)', // Optional: Desaturate slightly to blend better
+          }}
+        ></div>
+        <div className="relative z-10 p-6 md:p-12 max-w-5xl mx-auto rounded-xl shadow-2xl bg-white bg-opacity-90 border border-green-300
+              flex flex-col md:flex-row md:items-stretch md:text-left text-center
+              flex-grow-0 md:flex-grow w-11/12 md:w-auto overflow-hidden">
+          {/* Left Half: Text Content */}
+          <div className="md:w-1/2 p-4 md:pr-8">
+            <h2 className="text-4xl md:text-6xl font-extrabold text-gray-900 leading-tight mb-4 opacity-0 animate-fade-in-up">
+              We Solve Your
+              <span className="text-green-600"> Plumbing Problems With Ease</span>
+            </h2>
+            <p className="text-lg md:text-xl text-gray-700 mb-8 opacity-0 animate-fade-in-up" style={{ animationDelay: '0.2s', animationFillMode: 'forwards' }}>
+              So that you can focus on your most valuable tasks desperately.
+            </p>
+            {/* "Get a Free Estimate" button remains on the left with text */}
             <button
               onClick={() => scrollToSection('contact')}
-              className="bg-green-600 hover:bg-green-700 text-white font-bold py-4 px-10 rounded-full text-xl md:text-2xl transition duration-300 ease-in-out transform hover:scale-105 shadow-lg opacity-0 animate-fade-in-up animate-pulse-effect"
+              className="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-8 rounded-full text-lg md:text-xl transition duration-300 ease-in-out transform hover:scale-105 shadow-lg opacity-0 animate-fade-in-up animate-pulse-effect"
               style={{ animationDelay: '0.4s', animationFillMode: 'forwards' }}
             >
               Get a Free Estimate
             </button>
+          </div>
+
+          {/* Right Half: Image and Call Now Button */}
+          <div
+            className="md:w-1/2 p-4 mt-8 md:mt-0 flex flex-col items-center justify-center h-full w-full .rightContainer"
+            style={{
+              backgroundImage: "url('/cover.png')", /* Assuming cover.png is in your public folder */
+              backgroundSize: 'cover',
+              backgroundPosition: 'center', // Center the image
+              filter: 'grayscale(50%)', // Optional: Desaturate slightly to blend better
+              height: 450
+            }}
+          >
+            {/* The image (if applicable) would go inside here if you want it on top of the background image */}
+            {/* And the button */}
             <button
               onClick={() => window.location.href = 'tel:+1234567890'}
-              className="bg-gray-700 hover:bg-gray-800 text-white font-bold py-4 px-10 rounded-full text-xl md:text-2xl transition duration-300 ease-in-out transform hover:scale-105 shadow-lg opacity-0 animate-fade-in-up"
-              style={{ animationDelay: '0.5s', animationFillMode: 'forwards' }}
+              className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-10 rounded-full text-xl md:text-2xl transition duration-300 ease-in-out transform hover:scale-105 shadow-lg opacity-0 animate-fade-in-up"
+              style={{ animationDelay: '0.8s', animationFillMode: 'forwards' }}
             >
-              Call Our Experts
+              <span className="flex items-center">
+                <svg className="w-6 h-6 mr-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.774a11.037 11.037 0 006.103 6.103l.774-1.548a1 1 0 011.06-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"></path>
+                </svg>
+                Call Our Experts Now
+              </span>
             </button>
           </div>
         </div>
       </section>
-
       {/* About Us Section */}
       <section id="about" ref={aboutSectionRef} className={`py-20 px-6 md:px-12 bg-white opacity-0 ${isAboutInView ? 'animate-fade-in-up' : ''}`}>
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center md:space-x-12">
@@ -314,111 +295,122 @@ const HomePage4 = () => {
           <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-12">
             Our <span className="text-green-600">Comprehensive Services</span>
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {/* Service Card 1 */}
+          {/* Adjusted grid to 2 columns for larger screens to fit 4 items better, adjust if you add more */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+            {/* Service Card 1: Hot Water Services */}
             <div className={`bg-white p-8 rounded-xl shadow-lg border border-green-200 transform hover:scale-105 transition duration-300 ease-in-out ${isServicesInView ? 'animate-fade-in-up' : ''}`} style={{ animationDelay: '0s', animationFillMode: 'forwards' }}>
-              <Wrench className="text-green-600 mx-auto mb-6" size={48} />
-              <h3 className="text-2xl font-semibold text-gray-900 mb-4">Water Leak Detection</h3>
+              {/* Changed icon for hot water */}
+              <Lightbulb className="text-green-600 mx-auto mb-6" size={48} /> {/* Using Lightbulb, could be Thermometer or other */}
+              <h3 className="text-2xl font-semibold text-gray-900 mb-4">Hot Water Services</h3>
               <p className="text-gray-700 leading-relaxed">
-                Precise detection and repair to prevent water waste and property damage.
+                Expert installation, repair, and maintenance for all types of hot water systems.
               </p>
             </div>
-            {/* Service Card 2 */}
+
+            {/* Service Card 2: Air Conditioning */}
             <div className={`bg-white p-8 rounded-xl shadow-lg border border-green-200 transform hover:scale-105 transition duration-300 ease-in-out ${isServicesInView ? 'animate-fade-in-up' : ''}`} style={{ animationDelay: '0.1s', animationFillMode: 'forwards' }}>
-              <Lightbulb className="text-green-600 mx-auto mb-6" size={48} />
-              <h3 className="text-2xl font-semibold text-gray-900 mb-4">Eco-Friendly Drain Cleaning</h3>
+              {/* Changed icon for AC */}
+              <Fan className="text-green-600 mx-auto mb-6" size={48} /> {/* Assuming 'Fan' icon is available, adjust if not */}
+              <h3 className="text-2xl font-semibold text-gray-900 mb-4">Air Conditioning</h3>
               <p className="text-gray-700 leading-relaxed">
-                Safe and effective methods for clearing clogs without harsh chemicals.
+                Full-service AC solutions, from installation to efficient repairs and servicing.
               </p>
             </div>
-            {/* Service Card 3 */}
+
+            {/* Service Card 3: Repairing */}
             <div className={`bg-white p-8 rounded-xl shadow-lg border border-green-200 transform hover:scale-105 transition duration-300 ease-in-out ${isServicesInView ? 'animate-fade-in-up' : ''}`} style={{ animationDelay: '0.2s', animationFillMode: 'forwards' }}>
-              <CalendarCheck className="text-green-600 mx-auto mb-6" size={48} />
-              <h3 className="text-2xl font-semibold text-gray-900 mb-4">Water Heater Services</h3>
+              {/* Changed icon for repairing */}
+              <ToolCase className="text-green-600 mx-auto mb-6" size={48} /> {/* Assuming 'Tools' icon is available, or 'Wrench' */}
+              <h3 className="text-2xl font-semibold text-gray-900 mb-4">General Repairing</h3>
               <p className="text-gray-700 leading-relaxed">
-                Installation, repair, and maintenance of energy-efficient water heaters.
+                Comprehensive repair services for various plumbing and HVAC issues.
               </p>
             </div>
-            {/* Service Card 4 */}
+
+            {/* Service Card 4: Blocked Drain */}
             <div className={`bg-white p-8 rounded-xl shadow-lg border border-green-200 transform hover:scale-105 transition duration-300 ease-in-out ${isServicesInView ? 'animate-fade-in-up' : ''}`} style={{ animationDelay: '0.3s', animationFillMode: 'forwards' }}>
-              <Home className="text-green-600 mx-auto mb-6" size={48} />
-              <h3 className="text-2xl font-semibold text-gray-900 mb-4">Pipe Repair & Replacement</h3>
+              {/* Changed icon for blocked drain */}
+              <Wrench className="text-green-600 mx-auto mb-6" size={48} /> {/* Assuming 'PipeWrench' icon, or 'Faucet' with a 'Ban' symbol, or 'Liquid' */}
+              <h3 className="text-2xl font-semibold text-gray-900 mb-4">Blocked Drain</h3>
               <p className="text-gray-700 leading-relaxed">
-                Durable solutions for all piping needs, including sustainable materials.
+                Fast and effective solutions to clear blockages and restore proper drainage.
               </p>
             </div>
-            {/* Service Card 5 */}
-            <div className={`bg-white p-8 rounded-xl shadow-lg border border-green-200 transform hover:scale-105 transition duration-300 ease-in-out ${isServicesInView ? 'animate-fade-in-up' : ''}`} style={{ animationDelay: '0.4s', animationFillMode: 'forwards' }}>
-              <Info className="text-green-600 mx-auto mb-6" size={48} />
-              <h3 className="text-2xl font-semibold text-gray-900 mb-4">Low-Flow Fixture Installation</h3>
-              <p className="text-gray-700 leading-relaxed">
-                Upgrade to water-saving faucets, toilets, and showerheads.
-              </p>
-            </div>
-            {/* Service Card 6 */}
-            <div className={`bg-white p-8 rounded-xl shadow-lg border border-green-200 transform hover:scale-105 transition duration-300 ease-in-out ${isServicesInView ? 'animate-fade-in-up' : ''}`} style={{ animationDelay: '0.5s', animationFillMode: 'forwards' }}>
-              <Phone className="text-green-600 mx-auto mb-6" size={48} />
-              <h3 className="text-2xl font-semibold text-gray-900 mb-4">24/7 Emergency Plumbing</h3>
-              <p className="text-gray-700 leading-relaxed">
-                Rapid response for urgent plumbing issues, minimizing environmental impact.
-              </p>
-            </div>
+
+            {/* Removed Service Card 5 and 6 as you only listed 4 services */}
           </div>
         </div>
       </section>
 
       {/* Why Choose Us Section */}
       <section id="why-choose-us" ref={whyChooseUsSectionRef} className={`py-20 px-6 md:px-12 bg-white opacity-0 ${isWhyChooseUsInView ? 'animate-fade-in-up' : ''}`}>
-        <div className="max-w-6xl mx-auto text-center">
-          <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-12">
-            Why Choose <span className="text-green-600">EcoPlumb?</span>
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className={`bg-green-50 p-8 rounded-xl shadow-lg border border-green-200 transform hover:scale-105 transition duration-300 ease-in-out ${isWhyChooseUsInView ? 'animate-fade-in-scale' : ''}`} style={{ animationDelay: '0s', animationFillMode: 'forwards' }}>
-              <Headset className="text-green-600 mx-auto mb-6" size={48} />
-              <h3 className="text-2xl font-semibold text-gray-900 mb-4">Eco-Conscious Approach</h3>
-              <p className="text-gray-700 leading-relaxed">
-                Committed to sustainable plumbing solutions and water conservation.
-              </p>
-            </div>
-            <div className={`bg-green-50 p-8 rounded-xl shadow-lg border border-green-200 transform hover:scale-105 transition duration-300 ease-in-out ${isWhyChooseUsInView ? 'animate-fade-in-scale' : ''}`} style={{ animationDelay: '0.15s', animationFillMode: 'forwards' }}>
-              <FastForward className="text-green-600 mx-auto mb-6" size={48} />
-              <h3 className="text-2xl font-semibold text-gray-900 mb-4">Efficient & Timely</h3>
-              <p className="text-gray-700 leading-relaxed">
-                We provide prompt and efficient service, respecting your time.
-              </p>
-            </div>
-            <div className={`bg-green-50 p-8 rounded-xl shadow-lg border border-green-200 transform hover:scale-105 transition duration-300 ease-in-out ${isWhyChooseUsInView ? 'animate-fade-in-scale' : ''}`} style={{ animationDelay: '0.3s', animationFillMode: 'forwards' }}>
-              <Award className="text-green-600 mx-auto mb-6" size={48} />
-              <h3 className="text-2xl font-semibold text-gray-900 mb-4">Certified Professionals</h3>
-              <p className="text-gray-700 leading-relaxed">
-                Our team is highly trained, licensed, and dedicated to excellence.
-              </p>
-            </div>
-            <div className={`bg-green-50 p-8 rounded-xl shadow-lg border border-green-200 transform hover:scale-105 transition duration-300 ease-in-out ${isWhyChooseUsInView ? 'animate-fade-in-scale' : ''}`} style={{ animationDelay: '0.45s', animationFillMode: 'forwards' }}>
-              <ShieldCheck className="text-green-600 mx-auto mb-6" size={48} />
-              <h3 className="text-2xl font-semibold text-gray-900 mb-4">Guaranteed Workmanship</h3>
-              <p className="text-gray-700 leading-relaxed">
-                We stand by our work with a comprehensive satisfaction guarantee.
-              </p>
-            </div>
-            <div className={`bg-green-50 p-8 rounded-xl shadow-lg border border-green-200 transform hover:scale-105 transition duration-300 ease-in-out ${isWhyChooseUsInView ? 'animate-fade-in-scale' : ''}`} style={{ animationDelay: '0.6s', animationFillMode: 'forwards' }}>
-              <HeartHandshake className="text-green-600 mx-auto mb-6" size={48} />
-              <h3 className="text-2xl font-semibold text-gray-900 mb-4">Transparent Pricing</h3>
-              <p className="text-gray-700 leading-relaxed">
-                Clear, upfront pricing with no hidden fees or surprises.
-              </p>
-            </div>
-            <div className={`bg-green-50 p-8 rounded-xl shadow-lg border border-green-200 transform hover:scale-105 transition duration-300 ease-in-out ${isWhyChooseUsInView ? 'animate-fade-in-scale' : ''}`} style={{ animationDelay: '0.75s', animationFillMode: 'forwards' }}>
-              <Star className="text-green-600 mx-auto mb-6" size={48} />
-              <h3 className="text-2xl font-semibold text-gray-900 mb-4">Customer Satisfaction</h3>
-              <p className="text-gray-700 leading-relaxed">
-                Our top priority is ensuring you are completely happy with our service.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+  <div className="max-w-6xl mx-auto text-center">
+    <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-12">
+      Why Choose <span className="text-green-600">Us?</span>
+    </h2>
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {/* Feature Card 1: 24/7 Plumbing */}
+      <div className={`bg-green-50 p-8 rounded-xl shadow-lg border border-green-200 transform hover:scale-105 transition duration-300 ease-in-out ${isWhyChooseUsInView ? 'animate-fade-in-scale' : ''}`} style={{ animationDelay: '0s', animationFillMode: 'forwards' }}>
+        {/* Changed icon to represent 24/7 or emergency */}
+        <Clock className="text-green-600 mx-auto mb-6" size={48} /> {/* Using Clock, or Phone, or Emergency */}
+        <h3 className="text-2xl font-semibold text-gray-900 mb-4">24/7 Emergency Plumbing</h3>
+        <p className="text-gray-700 leading-relaxed">
+          Ready to assist you any time, day or night, for all urgent plumbing needs.
+        </p>
+      </div>
+
+      {/* Feature Card 2: Same Day Response */}
+      <div className={`bg-green-50 p-8 rounded-xl shadow-lg border border-green-200 transform hover:scale-105 transition duration-300 ease-in-out ${isWhyChooseUsInView ? 'animate-fade-in-scale' : ''}`} style={{ animationDelay: '0.15s', animationFillMode: 'forwards' }}>
+        {/* Changed icon for speed/response */}
+        <Rocket className="text-green-600 mx-auto mb-6" size={48} /> {/* Using Rocket, or FastForward */}
+        <h3 className="text-2xl font-semibold text-gray-900 mb-4">Same Day Response</h3>
+        <p className="text-gray-700 leading-relaxed">
+          We prioritize your urgent requests with prompt service and quick turnarounds.
+        </p>
+      </div>
+
+      {/* Feature Card 3: Price that fits */}
+      <div className={`bg-green-50 p-8 rounded-xl shadow-lg border border-green-200 transform hover:scale-105 transition duration-300 ease-in-out ${isWhyChooseUsInView ? 'animate-fade-in-scale' : ''}`} style={{ animationDelay: '0.3s', animationFillMode: 'forwards' }}>
+        {/* Changed icon for pricing */}
+        <DollarSign className="text-green-600 mx-auto mb-6" size={48} /> {/* Using DollarSign, or Tag */}
+        <h3 className="text-2xl font-semibold text-gray-900 mb-4">Price That Fits</h3>
+        <p className="text-gray-700 leading-relaxed">
+          Transparent and competitive pricing tailored to your budget, no hidden fees.
+        </p>
+      </div>
+
+      {/* Feature Card 4: Quality Workmanship */}
+      <div className={`bg-green-50 p-8 rounded-xl shadow-lg border border-green-200 transform hover:scale-105 transition duration-300 ease-in-out ${isWhyChooseUsInView ? 'animate-fade-in-scale' : ''}`} style={{ animationDelay: '0.45s', animationFillMode: 'forwards' }}>
+        {/* Changed icon for quality */}
+        <Hammer className="text-green-600 mx-auto mb-6" size={48} /> {/* Using Hammer, or Award, or ShieldCheck */}
+        <h3 className="text-2xl font-semibold text-gray-900 mb-4">Quality Workmanship</h3>
+        <p className="text-gray-700 leading-relaxed">
+          Dedicated to providing durable, reliable solutions with exceptional skill.
+        </p>
+      </div>
+
+      {/* Feature Card 5: Licensed Plumbers */}
+      <div className={`bg-green-50 p-8 rounded-xl shadow-lg border border-green-200 transform hover:scale-105 transition duration-300 ease-in-out ${isWhyChooseUsInView ? 'animate-fade-in-scale' : ''}`} style={{ animationDelay: '0.6s', animationFillMode: 'forwards' }}>
+        {/* Changed icon for licensed/certified */}
+        <FileText className="text-green-600 mx-auto mb-6" size={48} /> {/* Using FileText, or IdCard, or Certificate */}
+        <h3 className="text-2xl font-semibold text-gray-900 mb-4">Licensed Plumbers</h3>
+        <p className="text-gray-700 leading-relaxed">
+          Our team comprises fully licensed and highly skilled plumbing professionals.
+        </p>
+      </div>
+
+      {/* Feature Card 6: Google Review 4.7 */}
+      <div className={`bg-green-50 p-8 rounded-xl shadow-lg border border-green-200 transform hover:scale-105 transition duration-300 ease-in-out ${isWhyChooseUsInView ? 'animate-fade-in-scale' : ''}`} style={{ animationDelay: '0.75s', animationFillMode: 'forwards' }}>
+        {/* Changed icon for reviews/rating */}
+        <Star className="text-green-600 mx-auto mb-6" size={48} /> {/* Using Star, or Google, or ThumbsUp */}
+        <h3 className="text-2xl font-semibold text-gray-900 mb-4">Google Review 4.7+</h3>
+        <p className="text-gray-700 leading-relaxed">
+          Proudly maintaining a high customer satisfaction rating based on your feedback.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
 
       {/* Testimonials Section */}
       <section id="testimonials" ref={testimonialsSectionRef} className={`py-20 px-6 md:px-12 bg-gray-100 opacity-0 ${isTestimonialsInView ? 'animate-fade-in-up' : ''}`}>

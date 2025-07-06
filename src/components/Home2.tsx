@@ -167,7 +167,7 @@ const Home2 = () => {
         <div className="flex items-center">
           <Wrench className="text-blue-600 mr-3 h-8 w-8" />
           <h1 className="text-3xl font-bold text-gray-900">
-            <span className="text-blue-600">Aqua</span>Flow
+            <span className="text-blue-600">Beconsfield</span>Plumbing
           </h1>
         </div>
         <nav className="hidden md:flex space-x-8">
