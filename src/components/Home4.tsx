@@ -333,10 +333,10 @@ const HomePage4 = () => {
           </div>
           <div className={`md:w-1/2 ${isAboutInView ? 'animate-slide-in-right' : ''}`}>
             <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-6">
-              About <span className="text-green-600">EcoPlumb</span>
+              About <span className="text-green-600">Beaconsfield plumbing </span>
             </h2>
             <p className="text-lg text-gray-700 leading-relaxed mb-6">
-              EcoPlumb is committed to providing environmentally conscious plumbing services without compromising on quality or efficiency. With over 10 years in the industry, our team of certified professionals uses the latest techniques and sustainable practices.
+              Beaconsfield plumbing  is committed to providing environmentally conscious plumbing services without compromising on quality or efficiency. With over 10 years in the industry, our team of certified professionals uses the latest techniques and sustainable practices.
             </p>
             <p className="text-lg text-gray-700 leading-relaxed">
               We focus on long-term solutions, water conservation, and transparent service. From minor repairs to major green installations, we ensure your plumbing is both functional and sustainable.
@@ -494,7 +494,7 @@ const HomePage4 = () => {
             {/* Testimonial 1 */}
             <div className={`bg-white p-8 rounded-xl shadow-lg border border-green-200 ${isTestimonialsInView ? 'animate-fade-in-scale' : ''}`} style={{ animationDelay: '0s', animationFillMode: 'forwards' }}>
               <p className="text-lg text-gray-700 italic mb-6">
-                "EcoPlumb fixed our leaky faucet quickly and efficiently. Their commitment to eco-friendly solutions is a huge plus!"
+                "Beaconsfield plumbing  fixed our leaky faucet quickly and efficiently. Their commitment to eco-friendly solutions is a huge plus!"
               </p>
               <div className="flex items-center justify-center">
                 <img
@@ -511,7 +511,7 @@ const HomePage4 = () => {
             {/* Testimonial 2 */}
             <div className={`bg-white p-8 rounded-xl shadow-lg border border-green-200 ${isTestimonialsInView ? 'animate-fade-in-scale' : ''}`} style={{ animationDelay: '0.15s', animationFillMode: 'forwards' }}>
               <p className="text-lg text-gray-700 italic mb-6">
-                "Professional, knowledgeable, and very tidy. EcoPlumb installed our new water heater flawlessly. Highly recommend!"
+                "Professional, knowledgeable, and very tidy. Beaconsfield plumbing  installed our new water heater flawlessly. Highly recommend!"
               </p>
               <div className="flex items-center justify-center">
                 <img
@@ -583,7 +583,7 @@ const HomePage4 = () => {
             Ready for Reliable & Green Plumbing?
           </h2>
           <p className="text-xl md:text-2xl text-green-100 mb-10">
-            Let EcoPlumb handle your needs with expertise and environmental care.
+            Let Beaconsfield plumbing  handle your needs with expertise and environmental care.
           </p>
           <button
             onClick={() => scrollToSection('contact')}
@@ -622,7 +622,7 @@ const HomePage4 = () => {
                 <Mail className="text-green-600 mr-4 flex-shrink-0" size={28} />
                 <div>
                   <h3 className="text-xl font-semibold text-gray-900">Email Us</h3>
-                  <p className="text-lg">contact@ecoplumb.com</p>
+                  <p className="text-lg">contact@Beaconsfield plumbing .com</p>
                 </div>
               </div>
               <div className="flex items-center text-gray-700">
@@ -695,7 +695,7 @@ const HomePage4 = () => {
       <footer className="bg-gray-900 py-10 px-6 md:px-12 text-gray-300 text-center">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0">
           <div className="text-lg">
-            &copy; {new Date().getFullYear()} EcoPlumb. All rights reserved.
+            &copy; {new Date().getFullYear()} Beaconsfield plumbing . All rights reserved.
           </div>
           <div className="flex space-x-6">
             <a href="#" className="hover:text-green-400 transition duration-300">Privacy Policy</a>
