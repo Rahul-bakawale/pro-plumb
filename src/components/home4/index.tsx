@@ -1,7 +1,5 @@
 'use client'
-/* eslint-disable react/no-unescaped-entities */
-/* eslint-disable @next/next/no-img-element */
-/* eslint-disable  @typescript-eslint/no-explicit-any */
+
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Phone, Mail, MapPin, Clock, Facebook, Twitter, Instagram, Linkedin, Wrench, Fan, Lightbulb, User, MessageSquare, CheckCircle, Star, ToolCase, Rocket, DollarSign, Hammer, FileText } from 'lucide-react';
 import HomeSection from './Home';

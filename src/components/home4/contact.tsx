@@ -1,3 +1,5 @@
+'use client'
+
 import { Clock, Mail, MapPin, MessageSquare, Phone, User } from 'lucide-react';
 import React from 'react'
 

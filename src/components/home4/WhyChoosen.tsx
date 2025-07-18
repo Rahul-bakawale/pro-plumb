@@ -1,3 +1,4 @@
+'use client'
 import { Clock, DollarSign, FileText, Hammer, Rocket, Star } from 'lucide-react';
 import React from 'react';
 

@@ -1,7 +1,6 @@
 'use client'
 /* eslint-disable react/no-unescaped-entities */
-/* eslint-disable @next/next/no-img-element */
-/* eslint-disable  @typescript-eslint/no-explicit-any */
+
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Home, Info, Phone, Mail, MapPin, Clock, Facebook, Twitter, Instagram, Linkedin, Wrench, CalendarCheck, Lightbulb, User, MessageSquare, Award, ShieldCheck, HeartHandshake, Headset, FastForward, CheckCircle, Star } from 'lucide-react';
 // Custom hook for Intersection Observer to detect when an element is in view

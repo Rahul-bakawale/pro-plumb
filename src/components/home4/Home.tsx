@@ -1,3 +1,7 @@
+'use client'
+/* eslint-disable react/no-unescaped-entities */
+
+
 import { DollarSign, FileText, Hammer, Rocket } from 'lucide-react';
 import React from 'react'
 

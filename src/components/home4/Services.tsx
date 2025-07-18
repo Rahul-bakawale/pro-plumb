@@ -1,4 +1,6 @@
-import { Home, Lightbulb, ShowerHead, CloudRain, Wrench, ThermometerSnowflake, ToolCase } from 'lucide-react'; // Import new icons
+'use client'
+
+import { Home, ShowerHead, CloudRain, Wrench, ThermometerSnowflake, ToolCase } from 'lucide-react'; // Import new icons
 import React from 'react'
 
 
