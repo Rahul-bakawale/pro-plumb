@@ -1,6 +1,13 @@
-import HomePage from "@/components/Home";
-export default function Home() {
+
+import "./index.css";
+import HomeContainer from "@/components/Home";
+
+const Index = () => {
   return (
-    <HomePage />
+    <div className="min-h-screen">
+      <HomeContainer />
+    </div>
   );
-}
+};
+
+export default Index;
