@@ -1,12 +1,16 @@
 'use client'
 import React, { useState, useEffect } from "react";
 import { Phone, Menu, X } from "lucide-react";
+import { usePathname } from 'next/navigation';
 
 const Header = ({ handleClick }: any) => {
+  
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
+  const pathname = usePathname();
+  const [isScrolled, setIsScrolled] = useState(pathname !== '/');
 
-  const toggleMobileMenu = () => {
+  const toggleMobileMenu = (section: any) => {
+    section && handleClick(section)
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
@@ -16,7 +20,7 @@ const Header = ({ handleClick }: any) => {
       if (window.scrollY > 50) {
         setIsScrolled(true);
       } else {
-        setIsScrolled(false);
+        setIsScrolled(pathname === '/' ? false : true );
       }
     };
 
@@ -31,7 +35,7 @@ const Header = ({ handleClick }: any) => {
 
   return (
     <header
-      className={`fixed top-0 left-0 w-full z-50 text-white transition-all duration-300 ease-in-out ${isScrolled ? "bg-black bg-opacity-90 shadow-md" : "bg-transparent"
+      className={`fixed top-0 left-0 w-full z-50 text-white transition-all duration-300 ease-in-out ${(isScrolled ) ? "bg-black bg-opacity-90 shadow-md" : "bg-transparent"
         }`}
     >
       {/* Main Header Container */}
@@ -53,8 +57,8 @@ const Header = ({ handleClick }: any) => {
             <button onClick={() => handleClick('service')} className="hover:text-gray-300">
               Services
             </button>
-            <button onClick={() => handleClick('contact')} className="hover:text-gray-300">
-              Contact
+            <button onClick={() => handleClick('whyus')} className="hover:text-gray-300">
+              Why Us
             </button>
        
           </nav>
@@ -89,10 +93,10 @@ const Header = ({ handleClick }: any) => {
       {isMobileMenuOpen && (
         <div className="md:hidden w-full bg-black bg-opacity-90 transition-all duration-300 ease-in-out">
           <nav className="flex flex-col items-center py-8 space-y-6 text-xl">
-            <a href="#" onClick={toggleMobileMenu} className="hover:text-blue-400">Home</a>
-            <a href="#" onClick={toggleMobileMenu} className="hover:text-blue-400">About</a>
-            <a href="#" onClick={toggleMobileMenu} className="hover:text-blue-400">Services</a>
-            <a href="#" onClick={toggleMobileMenu} className="hover:text-blue-400">Contact</a>
+            <a href="#" onClick={() => toggleMobileMenu('home')} className="hover:text-blue-400">Home</a>
+            <a href="#" onClick={() => toggleMobileMenu('about')} className="hover:text-blue-400">About</a>
+            <a href="#" onClick={() => toggleMobileMenu('services')} className="hover:text-blue-400">Services</a>
+            <a href="#" onClick={() => toggleMobileMenu('whyus')} className="hover:text-blue-400">Why Us</a>
             {/* Mobile-specific contact info to be shown in the menu */}
             <div className="flex flex-col items-center mt-6">
               <span className="text-gray-300">Contact Me!</span>

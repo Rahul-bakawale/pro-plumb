@@ -18,12 +18,8 @@ const Footer = ({ handleClick}: any) => {
           {/* Navigation Links - Centered on desktop */}
           <div className="flex flex-col md:flex-row md:justify-center items-center h-full space-y-4 md:space-y-0 md:space-x-8 text-lg">
             <div className="hidden md:block h-full w-[1px] bg-white bg-opacity-20 mx-4"></div>
-            <button onClick={() => handleClick('contact')} className="hover:text-gray-300 transition duration-300">
-              Contact
-            </button>
-            <a href="#" className="hover:text-gray-300 transition duration-300">FAQ</a>
-            <button onClick={() => handleClick('about')} className="hover:text-gray-300 transition duration-300">
-              About
+            <button onClick={() => handleClick('whyus')} className="hover:text-gray-300 transition duration-300">
+              Why Us
             </button>
             <button onClick={() => handleClick('service')} className="hover:text-gray-300 transition duration-300">
               Services

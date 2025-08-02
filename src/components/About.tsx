@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 
 const About = React.forwardRef((props, ref: any) =>  {
   return (
-    <section ref={ref} className="py-5 md:py-5 bg-background">
+    <section ref={ref} className="py-10 md:py-20 bg-background">
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-12 gap-12 items-center">
           {/* Text Content Column */}

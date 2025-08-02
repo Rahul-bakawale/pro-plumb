@@ -1,3 +1,4 @@
+
 import React from 'react';
 
 const Hero = React.forwardRef((props, ref:any)  => {
@@ -74,10 +75,12 @@ const Hero = React.forwardRef((props, ref:any)  => {
             </div>
           </div>
         </div>
+        
       </section>
+      
 
       {/* Emergency Contact Box - Placed outside the section for positioning */}
-      <div className="container mx-auto px-4">
+      {/*<div className="container mx-auto px-4">
         <div className="em-card-container">
           <div className="bg-blue-700 p-6 rounded-lg text-center max-w-full md:max-w-xs em-card">
             <p className="text-white text-base mb-2">Have an emergency?</p>
@@ -85,7 +88,7 @@ const Hero = React.forwardRef((props, ref:any)  => {
             <p className="text-white text-xl md:text-2xl font-bold">+61 423558080</p>
           </div>
         </div>
-      </div>
+      </div>*/}
     </>
   );
 });
