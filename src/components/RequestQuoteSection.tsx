@@ -31,11 +31,12 @@ const RequestQuoteSection = React.forwardRef((props, ref: any) => {
             <div className="bg-blue-700 text-white p-6 md:p-8 lg:w-1/3 flex flex-col justify-between">
               <div>
                 <h3 className="text-lg md:text-xl font-semibold mb-2 md:mb-4">Our Location</h3>
-                <p className="text-sm md:text-base mb-4 md:mb-6">Edinburgh</p>
+                <p className="text-sm md:text-base mb-4 md:mb-6">Factory-1, 1-11 Bate Close, Pakenham East. 3810</p>
 
                 <h3 className="text-lg md:text-xl font-semibold mb-2 md:mb-4">Contact Us</h3>
                 <p className="text-sm md:text-base mb-1 md:mb-2">Email: plumberboy@gmail.com</p>
-                <p className="text-sm md:text-base mb-4 md:mb-6">Phone: 0789898989</p>
+                <p className="text-sm md:text-base mb-1 md:mb-2"> Name: Nathan</p>
+                <p className="text-sm md:text-base mb-4 md:mb-6">Phone: +61 433 151 042</p>
               </div>
               <p className="text-xs md:text-sm opacity-80 mt-auto">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Egestas facilisis vestibulum enim semper quis augue. Nibh luctus lacinia in libero faucibus eu. Erat netus.

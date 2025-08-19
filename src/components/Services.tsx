@@ -52,7 +52,7 @@ const ServicesSection = React.forwardRef((props, ref: any) =>  {
         {services.map((service, index) => (
           <div
           key={index}
-          className={`group flex flex-col items-center text-center p-6 rounded-lg border-3 border-gray-500 shadow-lg 
+          className={`group flex flex-col items-center text-center p-6 rounded-lg border-3 border-blue-900 shadow-lg 
                       transition-all duration-300 w-full h-full bg-white text-gray-800 
                       hover:bg-blue-700 hover:text-white hover:border-blue-800 hover:shadow-2xl`}
         >

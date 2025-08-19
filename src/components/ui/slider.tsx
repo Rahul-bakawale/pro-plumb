@@ -56,7 +56,7 @@ const ImageSlider = ({ images, interval = 3000 }: any) => {
             <img
               src={image.src}
               alt={`Slide ${index + 1}`}
-              className="w-full h-120 md:h-[400px] object-cover rounded-lg" // Adjusted for responsive height
+              className="w-full h-[230px] sm:h-[270px] md:h-[420px] lg:h-[570px] object-cover rounded-lg"
               onError={(e: any) => {
                 e.target.onerror = null; // Prevent infinite loop
                 e.target.src = `https://placehold.co/1920x1080/CCCCCC/000000?text=Image+Not+Found`; // Fallback image

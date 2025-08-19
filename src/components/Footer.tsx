@@ -9,7 +9,7 @@ const Footer = ({ handleClick}: any) => {
         <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-y-8 md:gap-y-0 items-center text-center md:text-left">
           {/* Logo Text - Styled to look like the image logo */}
           <div className="flex flex-col items-center md:items-start">
-            <span className="text-4xl font-extrabold text-white leading-none">DC</span>
+            <span className="text-4xl font-extrabold text-white leading-none">BEACONSFIELD</span>
             <span className="text-2xl font-bold text-white relative leading-none">
               PLUMBING
             </span>

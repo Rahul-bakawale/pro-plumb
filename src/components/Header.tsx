@@ -4,7 +4,7 @@ import { Phone, Menu, X } from "lucide-react";
 import { usePathname } from 'next/navigation';
 
 const Header = ({ handleClick }: any) => {
-  
+
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(pathname !== '/');
@@ -20,7 +20,7 @@ const Header = ({ handleClick }: any) => {
       if (window.scrollY > 50) {
         setIsScrolled(true);
       } else {
-        setIsScrolled(pathname === '/' ? false : true );
+        setIsScrolled(pathname === '/' ? false : true);
       }
     };
 
@@ -35,15 +35,19 @@ const Header = ({ handleClick }: any) => {
 
   return (
     <header
-      className={`fixed top-0 left-0 w-full z-50 text-white transition-all duration-300 ease-in-out ${(isScrolled ) ? "bg-black bg-opacity-90 shadow-md" : "bg-transparent"
+      className={`fixed top-0 left-0 w-full z-50 text-white transition-all duration-300 ease-in-out ${(isScrolled) ? "bg-black bg-opacity-90 shadow-md" : "bg-transparent"
         }`}
     >
       {/* Main Header Container */}
       <div className="container mx-auto px-4 py-4">
         <div className="flex justify-between items-center">
           {/* Beaconsfield Plumbing Logo/Text */}
-          <div className="text-2xl md:text-4xl font-normal tracking-wide text-white" style={{ fontFamily: 'Georgia, serif' }}>
-            Beaconsfield Plumbing
+          <div className="flex items-center">
+            <img
+              src="/logo.png" // Replace with your logo path (public/logo.png for Next.js or /src/assets/logo.png if React)
+              alt="Beaconsfield Plumbing"
+              className="sm:h-[15px] sm:w-[40px] h-[32px] w-[140px] lg:h-[50px] lg:w-[250px]"
+              />
           </div>
 
           {/* Desktop Navigation Links */}
@@ -60,7 +64,7 @@ const Header = ({ handleClick }: any) => {
             <button onClick={() => handleClick('whyus')} className="hover:text-gray-300">
               Why Us
             </button>
-       
+
           </nav>
 
           {/* Contact Me Section - Hidden on small screens, visible on medium screens and up */}
@@ -70,7 +74,7 @@ const Header = ({ handleClick }: any) => {
             </div>
             <div className="flex flex-col text-sm">
               <span className="text-white">Contact Me!</span>
-              <span className="font-semibold text-white">+61 423 550 030</span>
+              <span className="font-semibold text-white">+61 433 151 042</span>
             </div>
           </div>
 
@@ -102,7 +106,7 @@ const Header = ({ handleClick }: any) => {
               <span className="text-gray-300">Contact Me!</span>
               <div className="flex items-center mt-2">
                 <Phone className="h-5 w-5 mr-2" />
-                <span className="font-semibold">+61 423 550 030</span>
+                <span className="font-semibold">+61 433 151 042</span>
               </div>
             </div>
           </nav>
