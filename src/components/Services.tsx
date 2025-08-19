@@ -51,20 +51,25 @@ const ServicesSection = React.forwardRef((props, ref: any) =>  {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {services.map((service, index) => (
           <div
-            key={index}
-            className={`group flex flex-col items-center text-center p-6 rounded-lg shadow-md transition-all duration-300
-                       w-full h-full bg-white text-gray-800 hover:bg-blue-700 hover:text-white`}
+          key={index}
+          className={`group flex flex-col items-center text-center p-6 rounded-lg border-3 border-gray-500 shadow-lg 
+                      transition-all duration-300 w-full h-full bg-white text-gray-800 
+                      hover:bg-blue-700 hover:text-white hover:border-blue-800 hover:shadow-2xl`}
+        >
+          <div
+            className={`rounded-full w-20 h-20 flex items-center justify-center mb-6 bg-blue-100 group-hover:bg-white`}
           >
-            <div className={`rounded-full w-20 h-20 flex items-center justify-center mb-6 bg-blue-100 group-hover:bg-white`}>
-              {service.icon}
-            </div>
-            <h3 className={`font-poppins text-xl font-semibold mb-3 text-gray-900 group-hover:text-white`}>
-              {service.title}
-            </h3>
-            <p className={`text-sm sm:text-base text-gray-600 group-hover:text-blue-100`}>
-              {service.description}
-            </p>
+            {service.icon}
           </div>
+          <h3
+            className={`font-poppins text-xl font-semibold mb-3 text-gray-900 group-hover:text-white`}
+          >
+            {service.title}
+          </h3>
+          <p className={`text-sm sm:text-base text-gray-600 group-hover:text-blue-100`}>
+            {service.description}
+          </p>
+        </div>
         ))}
       </div>
     </section>

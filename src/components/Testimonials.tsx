@@ -48,7 +48,7 @@ const Testimonials = () => {
           {testimonials.map((testimonial, index) => (
             <div
               key={index}
-              className="bg-white p-6 rounded-lg shadow-md border border-gray-200"
+              className="bg-white p-6 rounded-lg shadow-md border-2 border-gray-500"
             >
               <p className="text-gray-800 font-poppins font-small text-sm md:text-[16px] mb-4">
                 {testimonial.text}
