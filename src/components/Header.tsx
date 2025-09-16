@@ -43,11 +43,7 @@ const Header = ({ handleClick }: any) => {
         <div className="flex justify-between items-center">
           {/* Beaconsfield Plumbing Logo/Text */}
           <div className="flex items-center">
-            <img
-              src="/logo.png" // Replace with your logo path (public/logo.png for Next.js or /src/assets/logo.png if React)
-              alt="Beaconsfield Plumbing"
-              className="sm:h-[15px] sm:w-[40px] h-[32px] w-[140px] lg:h-[50px] lg:w-[250px]"
-              />
+        
           </div>
 
           {/* Desktop Navigation Links */}

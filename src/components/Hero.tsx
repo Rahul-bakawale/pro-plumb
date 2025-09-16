@@ -21,49 +21,27 @@ const Hero = React.forwardRef((props, ref:any)  => {
         <div className="absolute inset-0 bg-black opacity-60"></div>
 
         <div className="container mx-auto px-4 relative z-10 h-full flex items-center">
-          <div className="grid md:grid-cols-2 gap-12 md:gap-20 items-center w-full">
+          <div className="grid md:grid-cols-2 gap-10 md:gap-10 items-center w-full">
             {/* Left Column: Heading, Description, Google Reviews */}
-            <div>
-              <h1 className="font-poppins font-medium text-4xl md:text-[60px] mb-2 md:mb-4 leading-tight">
+            <div className='mt-16'>
+                  <img
+              src="/logo.png" // Replace with your logo path (public/logo.png for Next.js or /src/assets/logo.png if React)
+              alt="Beaconsfield Plumbing"
+              className="sm:h-[15px] sm:w-[40px] h-[50px] w-[300px] lg:h-[250px] lg:w-[750px]"
+              />
+              <h5 className="font-poppins font-medium text-2xl md:text-[45px] mb-2 md:mb-4 leading-tight">
                 We Solve Your<br className="hidden md:inline" />
                 Plumbing Problems
-              </h1>
-              <h2 className='font-poppins font-small text-2xl md:text-[45px] mb-4 md:mb-6'>
+              </h5>
+              {/* <h2 className='font-poppins font-small text-2xl md:text-[45px] mb-4 md:mb-6'>
                 Quickly and Expertly you deserve
               </h2>
               <p className="text-sm md:text-xl mb-6 opacity-90 leading-relaxed max-w-lg">
                 Providing Reliable Plumbing Services for your home or business so that you can focus on more important tasks in your life
-              </p>
+              </p> */}
               
               {/* Google Reviews Section */}
-              <div className="flex flex-col md:flex-row items-start md:items-center gap-8 md:gap-12 mb-8">
-                <div className="flex flex-col items-start">
-                  <img src="/google.png" alt="Google Logo" className="h-8 md:h-10 mb-1 md:mb-2" /> 
-                  <div className="flex items-center">
-                    {[...Array(4)].map((_, i) => (
-                      <svg key={i} className="h-5 w-5 md:h-6 md:w-6 fill-yellow-400 text-yellow-400" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279L12 18.896l-7.416 3.816 1.48-8.279L.001 9.306l8.332-1.151L12 .587z"/>
-                      </svg>
-                    ))}
-                    <svg className="h-5 w-5 md:h-6 md:w-6 fill-yellow-400 text-yellow-400" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M12 2.25l-2.83 5.81-6.42.88 4.65 4.5L6.18 21.75 12 18.896l5.82 2.854-1.02-5.69 4.65-4.5-6.42-.88L12 2.25zm0 2.25v14.646l-4.41-2.16 1.02-5.69-4.65-4.5 6.42-.88L12 4.5z"/>
-                    </svg>
-                  </div>
-                  <span className="text-sm md:text-base font-semibold text-gray-300 mt-1">4.9 STAR</span>
-                </div>
-                
-                {/* Happy Customer & Work Completed */}
-                <div className="flex gap-4 md:gap-5">
-                  <div className="flex flex-col items-start">
-                    <span className="text-xl md:text-2xl font-bold">1200+</span>
-                    <span className="text-sm opacity-75">Happy Customer</span>
-                  </div>
-                  <div className="flex flex-col items-start">
-                    <span className="text-xl md:text-2xl font-bold">600+</span>
-                    <span className="text-sm opacity-75">Work Completed</span>
-                  </div>
-                </div>
-              </div>
+         
             </div>
             
             {/* Right Column: Button */}
