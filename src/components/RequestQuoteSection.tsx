@@ -7,7 +7,7 @@ const RequestQuoteSection = React.forwardRef((props, ref: any) => {
       {/* Background Image - now only top half with responsive height */}
       <div
         className="absolute top-0 left-0 w-full h-[300px] md:h-[700px] bg-cover bg-top"
-        style={{ backgroundImage: `url('/quote-sec.png')`, backgroundPositionX: 'top' }}
+        style={{ backgroundImage: `url('/quote-sec.webp')`, backgroundPositionX: 'top' }}
       >
         <div className="absolute inset-0" style={{ backgroundColor: 'rgba(0,0,0,0.5)' }}></div> {/* Dark transparent overlay */}
       </div>

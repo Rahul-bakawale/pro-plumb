@@ -1,15 +1,15 @@
 
 import React from 'react';
 
-const Hero = React.forwardRef((props, ref:any)  => {
+const Hero = React.forwardRef((props, ref: any) => {
   return (
     <>
-      <section 
-         ref={ref}
+      <section
+        ref={ref}
         // ADDED pt-20 (or similar padding) to push content down below the fixed header
-        className="relative pt-20 md:pt-32 text-white overflow-hidden" 
+        className="relative pt-20 md:pt-32 text-white overflow-hidden"
         style={{
-          backgroundImage: `url('/plumber1.png')`,
+          backgroundImage: `url('/plumber1.webp')`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           width: '100%',
@@ -23,27 +23,16 @@ const Hero = React.forwardRef((props, ref:any)  => {
         <div className="container mx-auto px-4 relative z-10 h-full flex items-center">
           <div className="grid md:grid-cols-2 gap-10 md:gap-10 items-center w-full">
             {/* Left Column: Heading, Description, Google Reviews */}
-            <div className='mt-16'>
-                  <img
-              src="/logo.png" // Replace with your logo path (public/logo.png for Next.js or /src/assets/logo.png if React)
-              alt="Beaconsfield Plumbing"
-              className="sm:h-[15px] sm:w-[40px] h-[50px] w-[300px] lg:h-[250px] lg:w-[750px]"
+            <div className="mt-16 w-full overflow-visible">
+              <img
+                src="/logo.png"
+                alt="Beaconsfield Plumbing"
+                className="mx-auto h-auto w-11/12 max-w-md md:w-[950px] md:max-w-none"
               />
-              <h5 className="font-poppins font-medium text-2xl md:text-[45px] mb-2 md:mb-4 leading-tight">
-                We Solve Your<br className="hidden md:inline" />
-                Plumbing Problems
+              <h5 className="font-poppins font-medium text-2xl md:text-[45px] leading-tight mt-6">
+                We Solve Your<br className="hidden md:inline" /> Plumbing Problems
               </h5>
-              {/* <h2 className='font-poppins font-small text-2xl md:text-[45px] mb-4 md:mb-6'>
-                Quickly and Expertly you deserve
-              </h2>
-              <p className="text-sm md:text-xl mb-6 opacity-90 leading-relaxed max-w-lg">
-                Providing Reliable Plumbing Services for your home or business so that you can focus on more important tasks in your life
-              </p> */}
-              
-              {/* Google Reviews Section */}
-         
             </div>
-            
             {/* Right Column: Button */}
             <div className="flex flex-col items-start md:items-end gap-6 mt-0">
               {/* Get Free Quote Button */}
@@ -53,9 +42,9 @@ const Hero = React.forwardRef((props, ref:any)  => {
             </div>
           </div>
         </div>
-        
+
       </section>
-      
+
 
       {/* Emergency Contact Box - Placed outside the section for positioning */}
       {/*<div className="container mx-auto px-4">
