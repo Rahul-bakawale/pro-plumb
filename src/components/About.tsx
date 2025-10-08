@@ -104,7 +104,7 @@ const About = React.forwardRef((props, ref: any) =>  {
           {/* Image Column */}
           <div className="relative md:col-span-5 mt-8 md:mt-0">
             <img
-              src={'/plumber2.webp'}
+              src={'/about.webp'}
               alt="Professional plumber working in Melbourne's eastern suburbs"
               className="rounded-xl shadow-2xl w-full max-w-sm md:max-w-md mx-auto object-cover h-auto"
             />

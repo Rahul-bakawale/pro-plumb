@@ -29,8 +29,10 @@ const Hero = React.forwardRef((props, ref: any) => {
                 alt="Beaconsfield Plumbing"
                 className="mx-auto h-auto w-11/12 max-w-md md:w-[950px] md:max-w-none"
               />
-              <h5 className="font-poppins font-medium text-2xl md:text-[45px] leading-tight mt-6">
-                We Solve Your<br className="hidden md:inline" /> Plumbing Problems
+              <h5 className="font-poppins font-medium text-2xl md:text-[28px] le  ading-tight mt-6">
+               
+                 We do plumbing repairs across East Melbourne suburbs. <br className="hidden inline" /> 
+                  24/7 callouts, upfront pricing, and 15+ years keeping local homes dry. 
               </h5>
             </div>
             {/* Right Column: Button */}

@@ -9,6 +9,7 @@ import MainLayout from '@/container/MainLayout';
 import WhyChooseUsSection from './WhyChooseUsSection';
 import BoxSection from './BoxSection';
 import FinalCall from './FinalCall';
+import FAQSection from './FAQSection';
 const HomeContainer = () => {
     const homeRef = useRef(null)
     const serviceRef = useRef(null)
@@ -23,6 +24,7 @@ const HomeContainer = () => {
             <Gallery />
             <Testimonials />
             <FinalCall/>
+            <FAQSection />
         </MainLayout>
     )
 }
