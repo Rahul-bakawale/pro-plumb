@@ -29,11 +29,21 @@ const Hero = React.forwardRef((props, ref: any) => {
                 alt="Beaconsfield Plumbing"
                 className="mx-auto h-auto w-11/12 max-w-md md:w-[950px] md:max-w-none"
               />
-              <h5 className="font-poppins font-medium text-2xl md:text-[28px] le  ading-tight mt-6">
-               
-                 We do plumbing repairs across East Melbourne suburbs. <br className="hidden inline" /> 
-                  24/7 callouts, upfront pricing, and 15+ years keeping local homes dry. 
-              </h5>
+
+
+              <div className="text-white">
+                {/* Heading 1: Start smaller (text-3xl) and scale up for larger screens. 
+        Note: I removed the overly large font sizes like sm:text-6xl and md:text-7xl */}
+                <h1 className="font-poppins font-bold text-3xl sm:text-4xl md:text-5xl lg:text-5xl leading-[1.2] mt-6">
+                  We do plumbing repairs across East Melbourne suburbs.
+                </h1>
+
+                {/* Paragraph: Start smaller (text-xl or text-2xl) and scale up. 
+        Note: I removed the overly large font sizes like sm:text-5xl and md:text-6xl */}
+                <p className="font-pontano font-normal text-xl sm:text-2xl md:text-3xl lg:text-4xl leading-[1] mt-4">
+                  24/7 callouts, upfront pricing, and 15+ years keeping local homes dry.
+                </p>
+              </div>
             </div>
             {/* Right Column: Button */}
             <div className="flex flex-col items-start md:items-end gap-6 mt-0">

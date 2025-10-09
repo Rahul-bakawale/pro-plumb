@@ -1,11 +1,12 @@
 'use client'
 import React, { useState, useMemo } from 'react';
-import { ChevronDown, ChevronUp, Search, X } from 'lucide-react';
+import { ChevronDown, ChevronUp, Search, X, Zap } from 'lucide-react'; // Added Zap for a professional touch
 import MainLayout from "@/container/MainLayout";
 
 // --- (Keep all existing categorizedFaqs and staticFaqs objects here, unchanged) ---
 // Structure the FAQs by Category for a better user experience
 const categorizedFaqs = {
+    // ... (Keep existing categorizedFaqs data)
     '🔧 General Plumbing FAQs': [
         {
             question: "What areas of Melbourne do you service?",
@@ -125,6 +126,7 @@ const categorizedFaqs = {
 };
 
 const staticFaqs = {
+    // ... (Keep existing staticFaqs data)
     '🛠 Maintenance & Repairs': [
         { question: "What plumbing maintenance services do you offer?", answer: "Routine inspections, pressure checks, leak detection (including thermal imaging), drain cleaning, fixture descaling, and backflow device testing." },
         { question: "How often should I service my plumbing system?", answer: "We recommend a comprehensive check-up every 1-2 years to prevent small issues from becoming major emergencies." },
@@ -165,34 +167,32 @@ const allFaqsWithStatic = Object.entries({...categorizedFaqs, ...staticFaqs}).fl
 );
 
 // Custom background style definition for the image's aesthetic
-// Note: In a real project, this should be an image or a more complex SVG/CSS pattern.
-// We'll use a simple linear-gradient and background color to approximate the soft blue.
+// Using a slightly more vibrant blue and an inner shadow effect for depth
 const backgroundStyle = {
-    // This provides the light blue base color
-    backgroundColor: '#e7f3fa', 
-    // This attempts to mimic the subtle light gray/white curved pattern using a large,
-    // repetitive radial gradient, though a true match requires an actual image.
-    backgroundImage: `radial-gradient(circle at 100% 100%, #fff 10%, transparent 10%),
-                       radial-gradient(circle at 0% 0%, #fff 10%, transparent 10%)`,
+    backgroundColor: '#e0f7fa', // Light, vibrant cyan/blue
+    backgroundImage: `radial-gradient(circle at 100% 100%, #ffffff80 5%, transparent 5%),
+                       radial-gradient(circle at 0% 0%, #ffffff80 5%, transparent 5%)`,
     backgroundSize: '200% 200%',
     backgroundPosition: 'top left',
-    // Add opacity layer to slightly blur the background pattern on top
-    // The soft pattern is very hard to recreate perfectly with pure CSS, 
-    // but these settings approximate the light blue feel.
+    // Add a slight inner shadow for a subtle 3D lift to the hero area
+    boxShadow: 'inset 0 -10px 15px -10px rgba(0,0,0,0.1)',
 };
 
 
 const GeneralPlumbingFaqs = () => {
     // State for Search Term
     const [searchTerm, setSearchTerm] = useState('');
+    // State for managing the currently open FAQ index, using a number for category/search, or null
     const [openIndex, setOpenIndex] = useState<number | null>(null);
 
     const toggleFAQ = (index: number) => {
+        // Only allow one FAQ to be open at a time for cleaner UX
         setOpenIndex(openIndex === index ? null : index);
     };
 
     const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setSearchTerm(e.target.value);
+        // Close any open FAQs when the user starts a new search
         setOpenIndex(null);
     };
 
@@ -203,10 +203,10 @@ const GeneralPlumbingFaqs = () => {
 
     // Use useMemo to filter FAQs efficiently
     const filteredFaqs = useMemo(() => {
-        if (!searchTerm) {
+        const lowerCaseSearch = searchTerm.toLowerCase().trim();
+        if (!lowerCaseSearch) {
             return [];
         }
-        const lowerCaseSearch = searchTerm.toLowerCase();
         
         return allFaqsWithStatic.filter(faq => 
             faq.question.toLowerCase().includes(lowerCaseSearch) || 
@@ -224,84 +224,122 @@ const GeneralPlumbingFaqs = () => {
         return (
             <div
                 key={isSearchResult ? `search-${globalIndex}` : globalIndex}
-                className="border border-blue-200 rounded-lg shadow-md transition-all duration-300 hover:border-blue-500 mb-4"
+                // Enhanced shadow, rounded corners, and hover effect for attractiveness
+                className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 mb-4 overflow-hidden border border-gray-100"
             >
                 <button
-                    className={`flex justify-between items-center w-full p-5 text-left font-semibold transition-colors duration-300 
-                    ${isOpen ? 'bg-blue-700 text-white rounded-t-lg' : 'bg-white text-gray-800 hover:bg-blue-50'}`}
+                    className={`flex justify-between items-center w-full p-4 md:p-5 text-left transition-colors duration-300 
+                    ${isOpen ? 'bg-blue-600 text-white shadow-md' : 'text-gray-900 hover:bg-blue-50'}`}
                     onClick={() => toggleFAQ(globalIndex)}
                 >
-                    <span className={`text-lg ${isOpen ? 'font-bold' : ''}`}>{faq.question}</span>
-                    {isOpen ? (<ChevronUp className="w-5 h-5 transition-transform duration-300" />) : (<ChevronDown className="w-5 h-5 transition-transform duration-300" />)}
+                    <span className={`text-base md:text-lg font-semibold pr-4 ${isOpen ? 'font-bold' : ''}`}>
+                        {faq.question}
+                    </span>
+                    {isOpen ? (
+                        <ChevronUp className="w-5 h-5 flex-shrink-0 transition-transform duration-300" />
+                    ) : (
+                        <ChevronDown className="w-5 h-5 flex-shrink-0 transition-transform duration-300" />
+                    )}
                 </button>
+                
+                {/* Category tag for search results */}
                 {isSearchResult && (
-                    <div className={`${isOpen ? 'bg-blue-600 text-white' : 'bg-blue-50 text-blue-700'} text-xs px-5 py-1 font-medium transition-all duration-300`}>
-                        Category: {faq.category}
+                    <div className="bg-blue-50 text-blue-700 text-xs px-5 py-1 font-medium border-t border-blue-100">
+                        Category: <span className="font-semibold">{faq.category}</span>
                     </div>
                 )}
+                
+                {/* Content area with smooth transition */}
                 <div
                     className="overflow-hidden transition-all duration-500 ease-in-out"
                     style={{ maxHeight: isOpen ? '500px' : '0' }}
                 >
-                    <div className="p-5 bg-white text-gray-700">
-                        <p className="text-base leading-relaxed" dangerouslySetInnerHTML={{ __html: faq.answer }} />
+                    <div className="p-4 md:p-5 bg-gray-50 text-gray-700 border-t border-gray-200">
+                        <p className="text-sm md:text-base leading-relaxed" dangerouslySetInnerHTML={{ __html: faq.answer }} />
                     </div>
                 </div>
             </div>
         );
     };
 
-    const renderStaticFaqBlock = (title: string, faqs: typeof staticFaqs['🛠 Maintenance & Repairs']) => (
-        <div key={title} className="mt-12 pt-6 border-t border-gray-200">
-            <h3 className="font-poppins font-semibold text-2xl md:text-3xl text-blue-700 mb-6 border-l-4 border-blue-700 pl-4">
-                {title}
-            </h3>
-            <div className="space-y-4">
-                {faqs.map((faq, index) => (
-                    <div key={index} className="bg-white p-4 rounded-lg shadow-sm border border-gray-100">
-                        <p className="font-semibold text-gray-900 mb-1">{faq.question}</p>
-                        <p className="text-gray-700 text-base" dangerouslySetInnerHTML={{ __html: faq.answer }} />
-                    </div>
-                ))}
-            </div>
-        </div>
-    );
+    const renderCategorizedBlock = (title: string, faqs: typeof categorizedFaqs['🔧 General Plumbing FAQs'], isCategorizedView: boolean) => {
+         // Only render static content in non-search mode
+        if (!isCategorizedView && title.includes('Maintenance & Repairs')) {
+            return null; 
+        }
 
-    let globalIndexOffset = 0; // Used for tracking the open state in the non-search view
+        return (
+            <div key={title} className="mt-10 pt-4 border-t border-gray-200">
+                {/* Enhanced Category Header */}
+                <h3 className="flex items-center font-poppins font-extrabold text-2xl md:text-3xl text-blue-800 mb-6">
+                    <Zap className='w-6 h-6 mr-3 text-yellow-500' />
+                    {title}
+                </h3>
+                
+                {/* Render simple card view for static/non-toggle blocks */}
+                {!isCategorizedView ? (
+                     <div className="space-y-4">
+                        {faqs.map((faq, index) => (
+                            <div key={index} className="bg-white p-4 rounded-xl shadow-md border border-gray-100">
+                                <p className="font-semibold text-gray-900 mb-1 flex items-center">
+                                    <span className="text-blue-500 mr-2">•</span> {faq.question}
+                                </p>
+                                <p className="text-gray-600 text-sm md:text-base pl-4" dangerouslySetInnerHTML={{ __html: faq.answer }} />
+                            </div>
+                        ))}
+                    </div>
+                ) : (
+                    // Render toggleable FAQ items for main categories
+                    <div className="space-y-4">
+                        {faqs.map((faq, index) => {
+                            const globalIndex = globalIndexOffset + index;
+                            return renderFaqItem({...faq, category: title}, globalIndex, false);
+                        })}
+                    </div>
+                )}
+            </div>
+        );
+    }
+    
+    // Reset offset calculation for categorized view
+    let globalIndexOffset = 0; 
+    
 
     return (
         <MainLayout>
-            {/* The first section gets the light blue, curved background style */}
+            {/* The first section with light background and search */}
             <div className="w-full" style={backgroundStyle}>
-                <section className="w-full max-w-4xl mx-auto px-4 py-20 sm:py-28">
+                <section className="w-full max-w-4xl mx-auto px-4 py-12 sm:py-20 md:py-28">
                     
-                    {/* Header text to match the image */}
-                    <h2 className="font-serif text-4xl md:text-5xl text-center text-gray-800 mb-10 font-normal">
-                        How can we help?
+                    {/* Header: More attractive and centered */}
+                    <h2 className="font-poppins text-3xl md:text-4xl text-center text-gray-800 font-extrabold mb-4">
+                        Need an Answer? Find It Here.
                     </h2>
+                    <p className="text-center text-gray-600 mb-10 text-lg">
+                        Browse our frequently asked questions or use search bar below.
+                    </p>
                     
-                    {/* Search Bar Implementation */}
-                    <div className="relative mb-6 max-w-2xl mx-auto">
+                    {/* Search Bar: Prominent and well-spaced */}
+                    <div className="relative mb-8 max-w-2xl mx-auto">
                         <input
                             type="text"
-                            placeholder="Search..." // Placeholder changed to match image brevity
+                            placeholder="e.g., 'hot water repairs'"
                             value={searchTerm}
                             onChange={handleSearchChange}
-                            // The search bar in the image is pure white with a very slight border/shadow
-                            className="w-full p-4 pl-12 pr-12 text-lg border-0 rounded-full shadow-lg bg-white focus:ring-2 focus:ring-blue-400 outline-none transition-all duration-300"
+                            // Enhanced search bar design for a modern feel
+                            className="w-full p-4 pl-14 pr-14 text-base md:text-lg border-2 border-transparent rounded-full shadow-xl bg-white focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition-all duration-300 outline-none"
                         />
-                        <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 w-6 h-6 text-gray-400" />
+                        <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 w-6 h-6 text-blue-500" />
                         {searchTerm && (
                             <button 
                                 onClick={clearSearch}
-                                className="absolute right-4 top-1/2 transform -translate-y-1/2 p-1 text-gray-500 hover:text-red-500 rounded-full transition-colors duration-200"
+                                className="absolute right-4 top-1/2 transform -translate-y-1/2 p-1 text-gray-500 hover:text-red-600 rounded-full transition-colors duration-200"
                                 aria-label="Clear search"
                             >
-                                <X className="w-5 h-5" />
+                                <X className="w-6 h-6" />
                             </button>
                         )}
                     </div>
-                  
                 </section>
             </div>
 
@@ -309,66 +347,64 @@ const GeneralPlumbingFaqs = () => {
             {/* FAQs Content Section (White Background Below Hero) */}
             <section className='w-full max-w-4xl mx-auto px-4 py-12 sm:py-20'>
                 {isSearching ? (
-                    // --- Search Results View ---
-                    <div className="mt-8">
-                        <div className="flex justify-between items-center mb-6 border-b pb-2">
-                            <h3 className="font-poppins font-semibold text-xl text-gray-700">
+                    // --- Search Results View (More prominent and clean) ---
+                    <div className="mt-4">
+                        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 pb-3 border-b-2 border-blue-200">
+                            <h3 className="font-poppins font-extrabold text-2xl text-blue-800 mb-2 sm:mb-0">
                                 {filteredFaqs.length > 0 
-                                    ? `Found ${filteredFaqs.length} results for: "${searchTerm}"` 
-                                    : 'No results found.'}
+                                    ? `Search Results (${filteredFaqs.length})` 
+                                    : 'No Results Found'}
                             </h3>
                             <button
                                 onClick={clearSearch}
-                                className="flex items-center text-blue-600 hover:text-blue-800 transition-colors duration-200 font-medium"
+                                className="flex items-center text-blue-600 hover:text-blue-800 transition-colors duration-200 font-medium text-sm md:text-base"
                             >
                                 <X className="w-4 h-4 mr-1" />
-                                Back to All FAQs
+                                Clear Search & View All Categories
                             </button>
                         </div>
 
                         {filteredFaqs.length > 0 ? (
                             <div className="space-y-4">
                                 {filteredFaqs.map((faq, index) => (
-                                    renderFaqItem(faq, index, true)
+                                    // Use a temporary index for search results to avoid state collision with categories
+                                    renderFaqItem(faq, index, true) 
                                 ))}
                             </div>
                         ) : (
-                            <div className="text-center py-10 bg-gray-50 rounded-lg border border-gray-200">
-                                <p className="text-xl text-gray-600 font-medium">
-                                    Sorry, we couldn't find any matches for "{searchTerm}".
+                            <div className="text-center py-16 bg-gray-50 rounded-xl border border-gray-200 shadow-inner">
+                                <p className="text-2xl text-red-600 font-semibold">
+                                    Oops! No Matches.
                                 </p>
-                                <p className="text-gray-500 mt-2">
-                                    Try a different keyword or check the full list below.
+                                <p className="text-gray-600 mt-4 max-w-md mx-auto">
+                                    We couldn't find any questions or answers related to **"{searchTerm}"**. 
+                                    Try a simpler keyword or browse the full categories below.
                                 </p>
                             </div>
                         )}
                     </div>
                 ) : (
-                    // --- Default Categorized View ---
+                    // --- Default Categorized View (Structured and clean) ---
                     <>
+                        {/* Render Main Toggleable Categories */}
                         <div className="space-y-4">
                             {Object.entries(categorizedFaqs).map(([categoryTitle, faqs]) => {
-                                const categoryStartingIndex = globalIndexOffset;
-
-                                const categoryBlock = (
-                                    <div key={categoryTitle}>
-                                        <h3 className="font-poppins font-semibold text-2xl md:text-3xl text-blue-700 mb-4 mt-6 border-l-4 border-blue-700 pl-4">
-                                            {categoryTitle}
-                                        </h3>
-                                        {faqs.map((faq, index) => {
-                                            const globalIndex = categoryStartingIndex + index;
-                                            return renderFaqItem({...faq, category: categoryTitle}, globalIndex, false);
-                                        })}
-                                    </div>
-                                );
-
-                                globalIndexOffset += faqs.length;
+                                const categoryBlock = renderCategorizedBlock(categoryTitle, faqs, true);
+                                globalIndexOffset += faqs.length; // Update offset for the next category
                                 return categoryBlock;
                             })}
                         </div>
+                        
+                        {/* Render Static/Detailed Categories (Non-toggleable cards) */}
+                        <h2 className="font-poppins font-extrabold text-3xl md:text-4xl text-blue-800 mt-16 pt-8 border-t-4 border-blue-500">
+                            Detailed Service FAQs
+                        </h2>
+                        <p className="text-gray-600 mb-8 text-lg">
+                            Answers to specific questions about our maintenance, drainage, gas fitting, and filtration services.
+                        </p>
 
-                        <div className='space-y-4'>
-                            {Object.entries(staticFaqs).map(([title, faqs]) => renderStaticFaqBlock(title, faqs))}
+                        <div className='space-y-8'>
+                            {Object.entries(staticFaqs).map(([title, faqs]) => renderCategorizedBlock(title, faqs, false))}
                         </div>
                     </>
                 )}
