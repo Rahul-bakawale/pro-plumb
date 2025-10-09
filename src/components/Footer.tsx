@@ -41,14 +41,41 @@ const Footer = ({ handleClick }: any) => {
             <div className="flex flex-col items-center md:items-start">
               <img src="/google.png" alt="Google Logo" className="h-8 md:h-10 mb-1 md:mb-2" />
               <div className="flex items-center">
+                {/* 4 Full Stars */}
                 {[...Array(4)].map((_, i) => (
-                  <svg key={i} className="h-5 w-5 md:h-6 md:w-6 fill-yellow-400 text-yellow-400" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279L12 18.896l-7.416 3.816 1.48-8.279L.001 9.306l8.332-1.151L12 .587z" />
+                  <svg
+                    key={i}
+                    className="h-5 w-5 md:h-6 md:w-6 fill-yellow-400 text-yellow-400"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                  >
+                    {/* Standard full star path */}
+                    <path d="M12 2.163l3.351 6.64 7.425 1.077-5.378 5.234 1.272 7.408L12 18.283l-6.67 3.239 1.273-7.408-5.378-5.234 7.425-1.077L12 2.163z" />
                   </svg>
                 ))}
-                <svg className="h-5 w-5 md:h-6 md:w-6 fill-yellow-400 text-yellow-400" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 2.25l-2.83 5.81-6.42.88 4.65 4.5L6.18 21.75 12 18.896l5.82 2.854-1.02-5.69 4.65-4.5-6.42-.88L12 2.25zm0 2.25v14.646l-4.41-2.16 1.02-5.69-4.65-4.5 6.42-.88L12 4.5z" />
-                </svg>
+
+                {/* 1 Star (90% Filled) */}
+                <div className="relative h-5 w-5 md:h-6 md:w-6">
+                  {/* Background (Empty/Gray) Star */}
+                  <svg
+                    className="absolute top-0 left-0 h-full w-full fill-gray-300 text-gray-300"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                  >
+                    <path d="M12 2.163l3.351 6.64 7.425 1.077-5.378 5.234 1.272 7.408L12 18.283l-6.67 3.239 1.273-7.408-5.378-5.234 7.425-1.077L12 2.163z" />
+                  </svg>
+
+                  {/* Foreground (90% Filled) Star */}
+                  <svg
+                    className="absolute top-0 left-0 h-full w-full fill-yellow-400 text-yellow-400"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    // Clips the right 10% (leaving 90% filled)
+                    style={{ clipPath: 'inset(0 35% 0 0)' }}
+                  >
+                    <path d="M12 2.163l3.351 6.64 7.425 1.077-5.378 5.234 1.272 7.408L12 18.283l-6.67 3.239 1.273-7.408-5.378-5.234 7.425-1.077L12 2.163z" />
+                  </svg>
+                </div>
               </div>
               <span className="text-sm md:text-base font-semibold text-gray-300 mt-1">4.9 STAR</span>
             </div>
