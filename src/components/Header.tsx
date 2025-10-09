@@ -76,7 +76,7 @@ const Header = ({ handleClick }: any) => {
 
           {/* Mobile Menu Button - Visible on small screens */}
           <button
-            onClick={toggleMobileMenu}
+            onClick={() =>  setIsMobileMenuOpen(!isMobileMenuOpen)}
             className="md:hidden text-white focus:outline-none"
             aria-label="Toggle mobile menu"
           >
@@ -93,10 +93,10 @@ const Header = ({ handleClick }: any) => {
       {isMobileMenuOpen && (
         <div className="md:hidden w-full bg-black bg-opacity-90 transition-all duration-300 ease-in-out">
           <nav className="flex flex-col items-center py-8 space-y-6 text-xl">
-            <a href="#" onClick={() => toggleMobileMenu('home')} className="hover:text-blue-400">Home</a>
-            <a href="#" onClick={() => toggleMobileMenu('about')} className="hover:text-blue-400">About</a>
-            <a href="#" onClick={() => toggleMobileMenu('services')} className="hover:text-blue-400">Services</a>
-            <a href="#" onClick={() => toggleMobileMenu('whyus')} className="hover:text-blue-400">Why Us</a>
+            <button onClick={() => toggleMobileMenu('home')} className="hover:text-blue-400">Home</button>
+            <button onClick={() => toggleMobileMenu('about')} className="hover:text-blue-400">About</button>
+            <button onClick={() => toggleMobileMenu('service')} className="hover:text-blue-400">Services</button>
+            <button onClick={() => toggleMobileMenu('whyus')} className="hover:text-blue-400">Why Us</button>
             {/* Mobile-specific contact info to be shown in the menu */}
             <div className="flex flex-col items-center mt-6">
               <span className="text-gray-300">Contact Me!</span>
