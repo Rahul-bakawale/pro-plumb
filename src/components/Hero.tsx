@@ -29,15 +29,15 @@ const Hero = React.forwardRef((props, ref: any) => {
                 alt="Beaconsfield Plumbing"
                 className="mx-auto h-auto w-11/12 max-w-md md:w-[950px] md:max-w-none"
               />
-              <div className="text-white pl-4 md:pl-2">
-            
-                <h1 className="font-poppins font-bold text-3xl sm:text-4xl md:text-5xl lg:text-5xl leading-[1.2]">
+              <div className="text-white pl-4 md:pl-2 md:w-[950px]">
+
+                <h1 className="font-poppins font-bold text-6xl sm:text-4xl md:text-4xl lg:text-5xl leading-[1.2]">
                   We do plumbing repairs across East Melbourne suburbs.
                 </h1>
 
                 {/* Paragraph: Start smaller (text-xl or text-2xl) and scale up. 
         Note: I removed the overly large font sizes like sm:text-5xl and md:text-6xl */}
-                <p className="font-pontano font-normal text-xl sm:text-2xl md:text-3xl lg:text-4xl leading-[1] mt-4">
+                <p className="font-inter font-normal text-xl sm:text-2xl md:text-3xl lg:text-4xl leading-[1] mt-4">
                   24/7 callouts, upfront pricing, and 15+ years keeping local homes dry.
                 </p>
               </div>
