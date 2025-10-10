@@ -29,12 +29,9 @@ const Hero = React.forwardRef((props, ref: any) => {
                 alt="Beaconsfield Plumbing"
                 className="mx-auto h-auto w-11/12 max-w-md md:w-[950px] md:max-w-none"
               />
-
-
-              <div className="text-white">
-                {/* Heading 1: Start smaller (text-3xl) and scale up for larger screens. 
-        Note: I removed the overly large font sizes like sm:text-6xl and md:text-7xl */}
-                <h1 className="font-poppins font-bold text-3xl sm:text-4xl md:text-5xl lg:text-5xl leading-[1.2] mt-6">
+              <div className="text-white pl-4 md:pl-2">
+            
+                <h1 className="font-poppins font-bold text-3xl sm:text-4xl md:text-5xl lg:text-5xl leading-[1.2]">
                   We do plumbing repairs across East Melbourne suburbs.
                 </h1>
 

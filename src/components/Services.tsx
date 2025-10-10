@@ -83,9 +83,8 @@ const ServicesSection = React.forwardRef((props, ref: any) => {
     <section ref={ref} className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-16">
       {/* Section Header */}
       <div className="text-center md:text-left mb-8 md:mb-12">
-        <p className="font-poppins font-medium text-lg md:text-[35px] text-gray-600 mb-2">Our Comprehensive Services</p>
         <h2 className="font-poppins font-medium text-3xl md:text-[70px] leading-tight text-gray-900 mb-6">
-          The Services that <br className="hidden sm:inline" /> we offer
+          Services we offer <br className="hidden sm:inline" /> 
         </h2>
       </div>
 
